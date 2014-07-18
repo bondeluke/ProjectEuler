@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EulerTools
 {
-    public class Factorization
+    public static class FactorizationHelper
     {
         public static ICollection<long> PrimeFactors(long number)
         {

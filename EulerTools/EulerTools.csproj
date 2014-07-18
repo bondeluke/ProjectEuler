@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factorization.cs" />
-    <Compile Include="Helper.cs" />
+    <Compile Include="FactorizationHelper.cs" />
+    <Compile Include="EulerHelper.cs" />
+    <Compile Include="PalindromeHelper.cs" />
     <Compile Include="PrimeGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

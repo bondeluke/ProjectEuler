@@ -14,7 +14,7 @@ namespace LargestPrimeFactor
         static void Main(string[] args)
         {
             long largestFactor = 1;
-            var factors = Factorization.PrimeFactors(largeNumber);
+            var factors = FactorizationHelper.PrimeFactors(largeNumber);
             foreach (long factor in factors)
                 if (factor > largestFactor)
                     largestFactor = factor;
