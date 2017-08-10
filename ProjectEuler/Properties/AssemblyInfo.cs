@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EulerTools")]
+[assembly: AssemblyTitle("ProjectEuler")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Lenovo")]
-[assembly: AssemblyProduct("EulerTools")]
-[assembly: AssemblyCopyright("Copyright © Lenovo 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ProjectEuler")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a3758567-576d-487c-94aa-ca368aad5577")]
+[assembly: Guid("1abcfdc6-63af-4f4e-b46e-25a827aae5bc")]
 
 // Version information for an assembly consists of the following four values:
 //

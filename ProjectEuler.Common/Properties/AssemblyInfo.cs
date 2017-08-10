@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EvenFibonacci")]
+[assembly: AssemblyTitle("ProjectEuler.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Lenovo")]
-[assembly: AssemblyProduct("EvenFibonacci")]
-[assembly: AssemblyCopyright("Copyright © Lenovo 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ProjectEuler.Common")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("dba8fd3d-3c7b-497a-93c5-130290758133")]
+[assembly: Guid("6afaa9cf-2e45-4728-ae2e-a7a8f62ebe03")]
 
 // Version information for an assembly consists of the following four values:
 //
