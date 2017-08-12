@@ -1,7 +1,5 @@
-﻿using ProjectEuler.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ProjectEuler
 {
@@ -86,7 +84,7 @@ namespace ProjectEuler
 
         public long GetNthPrime(int N)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

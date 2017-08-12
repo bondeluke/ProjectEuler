@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace ProjectEuler.Problems
 {
-    public class SumSquareDifference : ProjectEulerProblem
+    public class SumSquareDifference : IProjectEulerProblem
     {
-        public SumSquareDifference()
-        {
-            Id = 6;
-
-            Statement = "Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.";
-        }
-
-        public override void Solve()
+        public object Solve()
         {
             var integers = Integer.First(100).ToArray();
 
@@ -23,7 +12,7 @@ namespace ProjectEuler.Problems
 
             var squareOfSum = integers.Sum().Square();
 
-            Solution = squareOfSum - sumOfSquares;
+            return squareOfSum - sumOfSquares;
         }
     }
 }

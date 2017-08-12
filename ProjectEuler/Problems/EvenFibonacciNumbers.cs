@@ -1,18 +1,10 @@
-﻿using ProjectEuler.Common;
-
-namespace ProjectEuler.Problems
+﻿namespace ProjectEuler.Problems
 {
-    public class EvenFibonacciNumbers : ProjectEulerProblem
+    public class EvenFibonacciNumbers : IProjectEulerProblem
     {
         const long Limit = 4000000;
 
-        public EvenFibonacciNumbers()
-        {
-            Id = 2;
-            Statement = "By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.";
-        }
-
-        public override void Solve()
+        public object Solve()
         {
             long sum = 0;
 
@@ -22,7 +14,7 @@ namespace ProjectEuler.Problems
                 if (number.IsEven())
                     sum += number;
 
-            Solution = sum;
+            return sum;
         }
     }
 }

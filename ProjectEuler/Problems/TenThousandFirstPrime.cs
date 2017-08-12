@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectEuler.Problems
+﻿namespace ProjectEuler.Problems
 {
-    class TenThousandFirstPrime : ProjectEulerProblem
+    class TenThousandFirstPrime : IProjectEulerProblem
     {
-        public TenThousandFirstPrime()
+        public object Solve()
         {
-            Id = 7;
-
-            Statement = "What is the 10,001st prime number?";
-        }
-
-        public override void Solve()
-        {
-            Solution = new PrimeSequence().GetNthPrime(10001);
+            return new PrimeSequence().GetNthPrime(10001);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ProjectEuler
 {
     public static class PrimeExtensions
     {
-        public static ICollection<long> GeneratePrimeFactors(this long subject, bool repetition = false)
+        public static ICollection<long> GetPrimeFactors(this long subject, bool repetition = false)
         {
             var factors = new List<long>();
 
@@ -31,7 +31,7 @@ namespace ProjectEuler
 
         public static ICollection<long> GenerateUniquePrimeFactors(this long subject)
         {
-            return subject.GeneratePrimeFactors(true);
+            return subject.GetPrimeFactors(true);
         }
 
         public static bool IsPrime(this long subject)

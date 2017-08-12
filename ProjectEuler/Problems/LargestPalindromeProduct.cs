@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProjectEuler.Common;
 
 namespace ProjectEuler.Problems
 {
-    class LargestPalindromeProduct : ProjectEulerProblem
+    class LargestPalindromeProduct : IProjectEulerProblem
     {
         private const byte NumDigits = 3;
 
-        public LargestPalindromeProduct()
+        public object Solve()
         {
-            Id = 4;
-
-            Statement = "Find the largest palindrome made from the product of two 3-digit numbers.";
-        }
-
-        public override void Solve()
-        {
-            Solution = GetThreeDigitProducts().Where(Integer.IsPalindrome).Largest();
+            return GetThreeDigitProducts().Where(Integer.IsPalindrome).Largest();
         }
 
         private IEnumerable<long> GetThreeDigitProducts()

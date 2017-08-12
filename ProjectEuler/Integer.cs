@@ -1,46 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProjectEuler.Common;
 
 namespace ProjectEuler
 {
     public static class Integer
     {
-        public static bool IsMultipleOf(this long subject, long value)
+        public static bool IsMultipleOf(this long value, long divisor)
         {
-            return subject % value == 0;
+            return value % divisor == 0;
         }
 
-        public static bool IsMultipleOf(this long subject, params long[] values)
+        public static bool IsMultipleOf(this long value, params long[] divisors)
         {
-            foreach (var value in values)
-                if (subject.IsMultipleOf(value))
+            foreach (var divisor in divisors)
+                if (value.IsMultipleOf(divisor))
                     return true;
 
             return false;
         }
 
-        public static bool IsEven(this long subject)
+        public static bool IsEven(this long value)
         {
-            return subject.IsMultipleOf(2);
+            return value.IsMultipleOf(2);
         }
 
-        public static bool IsOdd(this long subject)
+        public static bool IsOdd(this long value)
         {
-            return !subject.IsMultipleOf(2);
+            return !value.IsMultipleOf(2);
         }
 
-        public static long Square(this long subject)
+        public static long Square(this long value)
         {
-            return subject * subject;
+            return value * value;
         }
 
-        public static bool IsPalindrome(this long subject)
+        public static bool IsPalindrome(this long value)
         {
-            return subject.ToString().IsPalindrome();
+            return value.ToString().IsPalindrome();
         }
 
         public static IEnumerable<long> To(this long from, long to)

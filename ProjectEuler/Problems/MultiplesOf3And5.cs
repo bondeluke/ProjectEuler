@@ -1,17 +1,8 @@
-﻿using ProjectEuler.Common;
-using System.Linq;
-
-namespace ProjectEuler.Problems
+﻿namespace ProjectEuler.Problems
 {
-    class MultiplesOf3And5 : ProjectEulerProblem
+    class MultiplesOf3And5 : IProjectEulerProblem
     {
-        public MultiplesOf3And5()
-        {
-            Id = 1;
-            Statement = "Find the sum of all the multiples of 3 or 5 below 1000.";
-        }
-
-        public override void Solve()
+        public object Solve()
         {
             var sum = 0L;
             var start = 1L; 
@@ -21,7 +12,7 @@ namespace ProjectEuler.Problems
                 if (value.IsMultipleOf(3, 5))
                     sum += value;
 
-            Solution = sum;
+            return sum;
         }
     }
 }

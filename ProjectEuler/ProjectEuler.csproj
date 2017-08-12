@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProjectEuler</RootNamespace>
     <AssemblyName>ProjectEuler</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ProjectEuler.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +48,8 @@
     <Compile Include="FibonacciSequence.cs" />
     <Compile Include="Integer.cs" />
     <Compile Include="PrimeExtensions.cs" />
-    <Compile Include="Problems\IProblem.cs" />
+    <Compile Include="ProblemExtensions.cs" />
+    <Compile Include="Problems\IProjectEulerProblem.cs" />
     <Compile Include="Problems\LargestPalindromeProduct.cs" />
     <Compile Include="Problems\SumSquareDifference.cs" />
     <Compile Include="Problems\TenThousandFirstPrime.cs" />
@@ -55,8 +60,8 @@
     <Compile Include="Problems\MultiplesOf3And5.cs" />
     <Compile Include="Problems\SumOfPrimes.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Problems\ProjectEulerProblem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProblemWithDiagnostics.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
