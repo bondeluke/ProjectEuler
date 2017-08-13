@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="FibonacciSequence.cs" />
     <Compile Include="Integer.cs" />
+    <Compile Include="PrimeCollection.cs" />
     <Compile Include="PrimeExtensions.cs" />
     <Compile Include="ProblemExtensions.cs" />
     <Compile Include="Problems\IProjectEulerProblem.cs" />

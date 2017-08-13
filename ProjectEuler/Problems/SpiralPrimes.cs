@@ -12,6 +12,8 @@ namespace ProjectEuler.Problems
 
             var layer = 1;
 
+            var primes = new PrimeCollection();
+
             while (((double)totalPrimes/totalNumbers) >= threshold)
             {
                 layer++;
@@ -19,7 +21,7 @@ namespace ProjectEuler.Problems
                 for (byte diagonal = 0; diagonal < 4; diagonal++)
                 {
                     var number = GetNumberAlongDiagonal(layer, diagonal);
-                    if (number.IsPrime())
+                    if (primes.IsPrime(number))
                         totalPrimes++;
 
                     totalNumbers++;
