@@ -7,7 +7,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new SpiralPrimes().WithDiagnostics();
+            var problem = new TenThousandFirstPrime().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 

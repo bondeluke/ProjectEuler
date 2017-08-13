@@ -4,7 +4,9 @@
     {
         public object Solve()
         {
-            return new PrimeSieve().GetNthPrime(10001);
+            var primes = new PrimeCollection();
+
+            return primes.GetNthPrime(10001);
         }
     }
 }

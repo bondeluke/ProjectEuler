@@ -81,15 +81,5 @@ namespace ProjectEuler
             while ((prime = sequence.Next()) < end)
                 yield return prime;
         }
-
-        public bool Contains(long subject)
-        {
-            return _isPrime[subject];
-        }
-
-        public long GetNthPrime(int N)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

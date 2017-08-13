@@ -10,6 +10,8 @@ namespace ProjectEuler
         private long _greatestChecked;
         const long _root = 2 * 3 * 5;
 
+
+
         public PrimeCollection()
         {
             _primes = new List<long>
@@ -71,6 +73,17 @@ namespace ProjectEuler
             {
                 _primes.Add(candidate);
             }
+        }
+
+        public long GetNthPrime(int n)
+        {
+            var index = n - 1; // The first prime n=1 will be at index=0
+            while (_primes.Count <= index)
+            {
+                PopulatePrimesUpTo(_greatestChecked + _root);
+            }
+
+            return _primes[index];
         }
     }
 }

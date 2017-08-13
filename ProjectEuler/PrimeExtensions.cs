@@ -35,11 +35,11 @@ namespace ProjectEuler
         }
 
         // Not thread safe
-        public static bool IsPrime(this long subject)
+        public static bool IsPrime(this long number)
         {
-            return _seq.Contains(subject);
+            return _primes.IsPrime(number);
         }
 
-        private static PrimeSieve _seq = new PrimeSieve(); // Need an implementation that can grow
+        private static PrimeCollection _primes = new PrimeCollection();
     }
 }
