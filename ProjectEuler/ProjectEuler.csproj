@@ -51,10 +51,11 @@
     <Compile Include="ProblemExtensions.cs" />
     <Compile Include="Problems\IProjectEulerProblem.cs" />
     <Compile Include="Problems\LargestPalindromeProduct.cs" />
+    <Compile Include="Problems\SpiralPrimes.cs" />
     <Compile Include="Problems\SumSquareDifference.cs" />
     <Compile Include="Problems\TenThousandFirstPrime.cs" />
     <Compile Include="Sequence.cs" />
-    <Compile Include="PrimeSeqeunce.cs" />
+    <Compile Include="PrimeSieve.cs" />
     <Compile Include="Problems\EvenFibonacciNumbers.cs" />
     <Compile Include="Problems\LargestPrimeFactor.cs" />
     <Compile Include="Problems\MultiplesOf3And5.cs" />

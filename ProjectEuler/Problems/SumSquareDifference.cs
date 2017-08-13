@@ -8,9 +8,9 @@ namespace ProjectEuler.Problems
         {
             var integers = Integer.First(100).ToArray();
 
-            var sumOfSquares = integers.Select(Integer.Square).Sum();
+            var sumOfSquares = integers.Select(Integer.Squared).Sum();
 
-            var squareOfSum = integers.Sum().Square();
+            var squareOfSum = integers.Sum().Squared();
 
             return squareOfSum - sumOfSquares;
         }

@@ -4,7 +4,7 @@
     {
         public object Solve()
         {
-            return new PrimeSequence().GetNthPrime(10001);
+            return new PrimeSieve().GetNthPrime(10001);
         }
     }
 }

@@ -9,34 +9,37 @@ namespace ProjectEuler
 {
     public static class PrimeExtensions
     {
-        public static ICollection<long> GetPrimeFactors(this long subject, bool repetition = false)
+        public static ICollection<long> GetPrimeFactors(this long value, bool repetition = false)
         {
             var factors = new List<long>();
 
-            var seq = new PrimeSequence();
+            var seq = new PrimeSieve();
 
             long prime;
-            while (subject != 1)
+            while (value != 1)
             {
                 prime = seq.Next();
-                while(subject.IsMultipleOf(prime))
+                while(value.IsMultipleOf(prime))
                 {
                     factors.Add(prime);
-                    subject /= prime;
+                    value /= prime;
                 }
             }
 
             return repetition ? factors.Distinct().ToList() : factors;
         }
 
-        public static ICollection<long> GenerateUniquePrimeFactors(this long subject)
+        public static ICollection<long> GenerateUniquePrimeFactors(this long value)
         {
-            return subject.GetPrimeFactors(true);
+            return value.GetPrimeFactors(true);
         }
 
+        // Not thread safe
         public static bool IsPrime(this long subject)
         {
-            return new PrimeSequence().Contains(subject);
+            return _seq.Contains(subject);
         }
+
+        private static PrimeSieve _seq = new PrimeSieve(); // Need an implementation that can grow
     }
 }

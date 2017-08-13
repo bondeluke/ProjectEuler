@@ -8,7 +8,7 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            return PrimeSequence.Below(limit).Sum();
+            return PrimeSieve.Below(limit).Sum();
         }
     }
 }

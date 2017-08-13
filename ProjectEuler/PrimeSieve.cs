@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjectEuler
 {
-    public class PrimeSequence : Sequence
+    public class PrimeSieve
     {
         private long _current;
 
@@ -11,11 +11,16 @@ namespace ProjectEuler
 
         private List<long> _primes;
 
-        private const long _defaultSize = 2100000;
+        private const long _defaultSize = 823123123;
 
         private long _size;
 
-        public override void Reset()
+        public PrimeSieve()
+        {
+            Reset();
+        }
+
+        public void Reset()
         {
             _size = _defaultSize;
             _current = 2;
@@ -36,7 +41,7 @@ namespace ProjectEuler
 
         private void CrossOutComposites()
         {
-            for (long number = 0; number.Square() < _size; number++)
+            for (long number = 0; number.Squared() < _size; number++)
             {
                 if (_isPrime[number])
                     CrossOutMultiplesOf(number);
@@ -49,7 +54,7 @@ namespace ProjectEuler
                 _isPrime[mult] = false;
         }
 
-        public override long Next()
+        public long Next()
         {
             var returnValue = _current;
 
@@ -69,7 +74,7 @@ namespace ProjectEuler
 
         public static IEnumerable<long> Below(long end)
         {
-            var sequence = new PrimeSequence();
+            var sequence = new PrimeSieve();
 
             long prime;
 

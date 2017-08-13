@@ -30,7 +30,7 @@ namespace ProjectEuler
             return !value.IsMultipleOf(2);
         }
 
-        public static long Square(this long value)
+        public static long Squared(this long value)
         {
             return value * value;
         }
@@ -90,6 +90,11 @@ namespace ProjectEuler
         public static IEnumerable<long> First(int upper)
         {
             return Range(1, upper);
+        }
+
+        public static long ToLong(this int value)
+        {
+            return Convert.ToInt64(value);
         }
     }
 }

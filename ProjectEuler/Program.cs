@@ -7,7 +7,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new MultiplesOf3And5().WithDiagnostics();
+            var problem = new SpiralPrimes().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 
