@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FibonacciSequence.cs" />
+    <Compile Include="FileHelper.cs" />
     <Compile Include="Math\Integer.cs" />
     <Compile Include="Math\Range.cs" />
     <Compile Include="Primes\PrimeCollection.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Core\ProblemExtensions.cs" />
     <Compile Include="Core\IProjectEulerProblem.cs" />
     <Compile Include="Problems\LargestPalindromeProduct.cs" />
+    <Compile Include="Problems\Problem99\LargestExponential.cs" />
+    <Compile Include="Problems\Problem99\LineInfo.cs" />
     <Compile Include="Problems\SpiralPrimes.cs" />
     <Compile Include="Problems\SumSquareDifference.cs" />
     <Compile Include="Problems\TenThousandFirstPrime.cs" />
@@ -69,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Problems\Problem99\numbers.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

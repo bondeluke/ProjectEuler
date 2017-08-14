@@ -1,4 +1,5 @@
 ﻿using ProjectEuler.Core;
+using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
 {

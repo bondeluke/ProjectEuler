@@ -1,7 +1,7 @@
 ﻿using ProjectEuler.Math;
 using System.Collections.Generic;
 
-namespace ProjectEuler
+namespace ProjectEuler.Primes
 {
     public class PrimeSieve : List<long>
     {

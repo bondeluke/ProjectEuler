@@ -66,13 +66,13 @@ namespace ProjectEuler.Math
 
         public static IEnumerable<long> GetNDigitIntegers(byte N)
         {
-            var range = GetNDigitBoundaries(N);
+            var range = GetAllNDigitNumbers(N);
 
             for (long integer = range.Lower; integer < range.Upper; integer++)
                 yield return integer;
         }
 
-        public static Range GetNDigitBoundaries(byte N)
+        public static Range GetAllNDigitNumbers(byte N)
         {
             long lower = Convert.ToInt64(System.Math.Pow(10, N - 1));
             long upper = Convert.ToInt64(System.Math.Pow(10, N));

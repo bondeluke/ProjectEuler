@@ -1,4 +1,5 @@
 ﻿using ProjectEuler.Problems;
+using ProjectEuler.Problems.Problem99;
 using System;
 
 namespace ProjectEuler
@@ -7,7 +8,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new SumOfPrimes().WithDiagnostics();
+            var problem = new LargestExponential().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 
