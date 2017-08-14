@@ -4,7 +4,8 @@ using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
 {
-    class SpiralPrimes : IProjectEulerProblem
+    // Spiral primes
+    public class Problem58 : IProjectEulerProblem
     {
         public object Solve()
         {

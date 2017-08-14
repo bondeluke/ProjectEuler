@@ -5,7 +5,8 @@ using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems.Problem99
 {
-    class LargestExponential : IProjectEulerProblem
+    // Largest Exponential
+    public class Problem99 : IProjectEulerProblem
     {
         public object Solve()
         {
@@ -31,12 +32,12 @@ namespace ProjectEuler.Problems.Problem99
             return greatest;
         }
 
-        private bool IsGreaterThan(LineInfo line1, LineInfo line2)
+        private static bool IsGreaterThan(LineInfo line1, LineInfo line2)
         {
-            return Logarithm(line1) > Logarithm(line2);
+            return Log(line1) > Log(line2);
         }
 
-        private double Logarithm(LineInfo line)
+        private static double Log(LineInfo line)
         {
             return line.Exponent * System.Math.Log(line.Base);
         }

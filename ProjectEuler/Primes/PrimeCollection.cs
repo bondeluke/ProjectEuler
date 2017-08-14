@@ -5,22 +5,26 @@ using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
-    class PrimeCollection
+    public class PrimeCollection
     {
         private readonly List<long> _primes;
 
         private long _greatestChecked;
+        private readonly long _largestCoPrime;
 
-        private const long Root = 2 * 3 * 5;
+        private const long Root = 2 * 3;
+
+        public int Count => _primes.Count;
 
         public PrimeCollection()
         {
             _primes = new List<long>
             {
-                2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+                2, 3, 5/*, 7, 11, 13, 17, 19, 23, 29*/
             };
 
-            _greatestChecked = Root - 1; // Number of the form 30k + 29
+            _largestCoPrime = Root - 1;
+            _greatestChecked = _largestCoPrime; // Number of the form 6k + 5
         }
 
         public bool IsPrime(long number)
@@ -30,11 +34,6 @@ namespace ProjectEuler.Primes
 
             var sqrt = number.Sqrt().Ceiling().ToLong();
 
-            if (sqrt > _greatestChecked)
-            {
-                PopulatePrimesUpTo(sqrt);
-            }
-
             var i = 0;
             long prime = 2;
             while (true)
@@ -42,32 +41,33 @@ namespace ProjectEuler.Primes
                 if (number % prime == 0)
                     return false; // number is not a prime.
 
-                if (prime >= sqrt || _primes.Count == i + 1)
-                    break;
+                if (_primes.Count == i + 1)
+                {
+                    PopulatePrimesUpTo(sqrt);
+                }
+
+                if (prime >= sqrt || _primes.Count == i + 1) // If we just populated, but none were added, this number must be prime.
+                    return true;
 
                 i += 1;
                 prime = _primes[i];
             }
-
-            return true;
         }
 
         private void PopulatePrimesUpTo(long upto)
         {
-            for (var thirtyk = _greatestChecked + 1; thirtyk <= upto; thirtyk += Root)
+            for (var kRoot = _greatestChecked + 1; kRoot <= upto; kRoot += Root)
             {
-                AddIfPrime(thirtyk + 1);
-                AddIfPrime(thirtyk + 7);
-                AddIfPrime(thirtyk + 11);
-                AddIfPrime(thirtyk + 13);
-                AddIfPrime(thirtyk + 17);
-                AddIfPrime(thirtyk + 19);
-                AddIfPrime(thirtyk + 23);
-                AddIfPrime(thirtyk + 29);
+                foreach (var coPrime in _rootLesserCoPrimes.Value)
+                {
+                    AddIfPrime(kRoot + coPrime);
+                }
 
-                _greatestChecked = thirtyk + 29;
+                _greatestChecked = kRoot + _largestCoPrime;
             }
         }
+
+        private readonly Lazy<long[]> _rootLesserCoPrimes = new Lazy<long[]>(() => Root.GetLesserCoPrimes());
 
         private void AddIfPrime(long candidate)
         {

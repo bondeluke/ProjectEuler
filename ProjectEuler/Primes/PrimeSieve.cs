@@ -3,15 +3,20 @@ using System.Collections.Generic;
 
 namespace ProjectEuler.Primes
 {
-    public class PrimeSieve : List<long>
+    public class PrimeSieve
     {
         private bool[] _isPrime;
 
         private readonly int _limit;
 
-        public PrimeSieve(int limit) : base(256)
+        private readonly List<long> _primes;
+
+        public long[] Primes => _primes.ToArray();
+
+        public PrimeSieve(int limit)
         {
             _limit = limit;
+            _primes = new List<long>();
 
             InitializeArray();
             CrossOutComposites();
@@ -24,7 +29,7 @@ namespace ProjectEuler.Primes
             {
                 if (_isPrime[i])
                 {
-                    Add(i);
+                    _primes.Add(i);
                 }
             }
         }

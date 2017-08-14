@@ -12,7 +12,7 @@ namespace ProjectEuler.Primes
 
             while (value != 1)
             {
-                foreach (var prime in _sieve)
+                foreach (var prime in _sieve.Primes)
                 {
                     while (value.IsMultipleOf(prime))
                     {

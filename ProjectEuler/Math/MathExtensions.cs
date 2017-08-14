@@ -2,7 +2,7 @@
 
 namespace ProjectEuler.Math
 {
-    static class MathExtensions
+    public static class MathExtensions
     {
         public static long ToLong(this int value)
         {
@@ -34,9 +34,14 @@ namespace ProjectEuler.Math
             return System.Math.Ceiling(value);
         }
 
-        public static double Power(this int value, double power)
+        public static long Power(this int value, int power)
         {
-            return System.Math.Pow(value, power);
+            return System.Math.Pow(value, power).ToLong();
+        }
+
+        public static long Power(this long value, int power)
+        {
+            return System.Math.Pow(value, power).ToLong();
         }
     }
 }

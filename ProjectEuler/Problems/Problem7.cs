@@ -3,7 +3,8 @@ using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
 {
-    class TenThousandFirstPrime : IProjectEulerProblem
+    // Problem 7: What is the 10,001st prime number?
+    public class Problem7 : IProjectEulerProblem
     {
         public object Solve()
         {

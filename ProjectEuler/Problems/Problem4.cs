@@ -5,7 +5,8 @@ using System.Linq;
 
 namespace ProjectEuler.Problems
 {
-    class LargestPalindromeProduct : IProjectEulerProblem
+    // Problem 4: Find the largest palindrome made from the product of two 3-digit numbers.
+    public class Problem4 : IProjectEulerProblem
     {
         private const byte NumDigits = 3;
 

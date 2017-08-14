@@ -1,6 +1,6 @@
 ﻿namespace ProjectEuler.Core
 {
-    static class ProblemExtensions
+    public static class ProblemExtensions
     {
         public static ProblemWithDiagnostics WithDiagnostics(this IProjectEulerProblem problem)
         {

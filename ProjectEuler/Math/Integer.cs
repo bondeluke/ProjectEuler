@@ -11,7 +11,7 @@ namespace ProjectEuler.Math
             return value % divisor == 0;
         }
 
-        public static bool IsMultipleOf(this long value, params long[] divisors)
+        public static bool IsMultipleOfAny(this long value, params long[] divisors)
         {
             return divisors.Any(divisor => value.IsMultipleOf(divisor));
         }
@@ -71,21 +71,41 @@ namespace ProjectEuler.Math
 
         public static Range GetAllNDigitNumbers(byte N)
         {
-            var lower = 10.Power(N-1).ToLong();
-            var upper = 10.Power(N).ToLong();
+            var lower = 10.Power(N - 1);
+            var upper = 10.Power(N);
 
             return new Range(lower, upper);
         }
 
-        public static IEnumerable<long> Range(int lower, int upper)
+        public static IEnumerable<long> Range(long lower, long upper)
         {
             for (var number = lower; number <= upper; number++)
                 yield return number;
         }
 
-        public static IEnumerable<long> First(int upper)
+        public static bool IsCoPrimeWith(this long number, long candidate)
         {
-            return Range(1, upper);
+            return number.Gcd(candidate) == 1;
+        }
+
+        public static long[] GetLesserCoPrimes(this long number)
+        {
+            // Not performant
+            return Range(1, number - 1)
+                .Where(n => n.IsCoPrimeWith(number))
+                .ToArray();
+        }
+
+        public static long Gcd(this long a, long b)
+        {
+            // http://www.vcskicks.com/euclidean-gcd.php
+            while (true)
+            {
+                if (b == 0) return a;
+                var a1 = a;
+                a = b;
+                b = a1 % b;
+            }
         }
     }
 }

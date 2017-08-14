@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjectEuler
 {
-    class FibonacciSequence : IEnumerable<long>
+    public class FibonacciSequence : IEnumerable<long>
     {
         public FibonacciSequence()
         {
