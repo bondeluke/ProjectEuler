@@ -1,4 +1,4 @@
-﻿namespace ProjectEuler.Common
+﻿namespace ProjectEuler
 {
     public static class StringExtensions
     {

@@ -1,4 +1,7 @@
-﻿namespace ProjectEuler.Problems
+﻿using ProjectEuler.Core;
+using ProjectEuler.Math;
+
+namespace ProjectEuler.Problems
 {
     public class EvenFibonacciNumbers : IProjectEulerProblem
     {

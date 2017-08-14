@@ -1,4 +1,4 @@
-﻿namespace ProjectEuler.Common
+﻿namespace ProjectEuler.Math
 {
     public class Range
     {

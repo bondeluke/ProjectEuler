@@ -1,7 +1,6 @@
-﻿using ProjectEuler.Problems;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
-namespace ProjectEuler
+namespace ProjectEuler.Core
 {
     public class ProblemWithDiagnostics : IProjectEulerProblem
     {

@@ -1,4 +1,6 @@
-﻿namespace ProjectEuler.Problems
+﻿using ProjectEuler.Core;
+
+namespace ProjectEuler.Problems
 {
     class TenThousandFirstPrime : IProjectEulerProblem
     {

@@ -1,4 +1,4 @@
-﻿namespace ProjectEuler.Problems
+﻿namespace ProjectEuler.Core
 {
     public interface IProjectEulerProblem
     {

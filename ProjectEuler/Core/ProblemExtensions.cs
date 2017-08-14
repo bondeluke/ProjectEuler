@@ -1,4 +1,4 @@
-﻿using ProjectEuler.Problems;
+﻿using ProjectEuler.Core;
 
 namespace ProjectEuler
 {

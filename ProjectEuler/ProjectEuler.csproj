@@ -46,33 +46,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FibonacciSequence.cs" />
-    <Compile Include="Integer.cs" />
-    <Compile Include="PrimeCollection.cs" />
-    <Compile Include="PrimeExtensions.cs" />
-    <Compile Include="ProblemExtensions.cs" />
-    <Compile Include="Problems\IProjectEulerProblem.cs" />
+    <Compile Include="Math\Integer.cs" />
+    <Compile Include="Math\Range.cs" />
+    <Compile Include="Primes\PrimeCollection.cs" />
+    <Compile Include="Primes\PrimeExtensions.cs" />
+    <Compile Include="Core\ProblemExtensions.cs" />
+    <Compile Include="Core\IProjectEulerProblem.cs" />
     <Compile Include="Problems\LargestPalindromeProduct.cs" />
     <Compile Include="Problems\SpiralPrimes.cs" />
     <Compile Include="Problems\SumSquareDifference.cs" />
     <Compile Include="Problems\TenThousandFirstPrime.cs" />
     <Compile Include="Sequence.cs" />
-    <Compile Include="PrimeSieve.cs" />
+    <Compile Include="Primes\PrimeSieve.cs" />
     <Compile Include="Problems\EvenFibonacciNumbers.cs" />
     <Compile Include="Problems\LargestPrimeFactor.cs" />
     <Compile Include="Problems\MultiplesOf3And5.cs" />
     <Compile Include="Problems\SumOfPrimes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProblemWithDiagnostics.cs" />
+    <Compile Include="Core\ProblemWithDiagnostics.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectEuler.Common\ProjectEuler.Common.csproj">
-      <Project>{f233e790-f541-4cd0-a3de-00870d88117c}</Project>
-      <Name>ProjectEuler.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

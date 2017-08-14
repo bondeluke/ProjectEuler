@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProjectEuler.Common;
 
-namespace ProjectEuler
+namespace ProjectEuler.Math
 {
     public static class Integer
     {
@@ -75,8 +74,8 @@ namespace ProjectEuler
 
         public static Range GetNDigitBoundaries(byte N)
         {
-            long lower = Convert.ToInt64(Math.Pow(10, N - 1));
-            long upper = Convert.ToInt64(Math.Pow(10, N));
+            long lower = Convert.ToInt64(System.Math.Pow(10, N - 1));
+            long upper = Convert.ToInt64(System.Math.Pow(10, N));
 
             return new Range(lower, upper);
         }

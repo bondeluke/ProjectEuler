@@ -7,10 +7,10 @@ namespace ProjectEuler
     class PrimeCollection
     {
         public List<long> _primes;
+
         private long _greatestChecked;
+
         const long _root = 2 * 3 * 5;
-
-
 
         public PrimeCollection()
         {
@@ -27,7 +27,7 @@ namespace ProjectEuler
             if (_greatestChecked > number)
                 return _primes.Any(p => p == number);
 
-            var sqrt = Convert.ToInt64(Math.Ceiling(Math.Sqrt(number)));
+            var sqrt = Convert.ToInt64(System.Math.Ceiling(System.Math.Sqrt(number)));
 
             if (sqrt > _greatestChecked)
             {
@@ -67,6 +67,7 @@ namespace ProjectEuler
                 _greatestChecked = thirtyk + 29;
             }
         }
+
         private void AddIfPrime(long candidate)
         {
             if (IsPrime(candidate))
