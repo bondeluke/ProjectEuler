@@ -57,5 +57,10 @@ namespace ProjectEuler.Primes
             for (long mult = prime * 2; mult < _limit; mult += prime)
                 _isPrime[mult] = false;
         }
+
+        public bool IsPrime(int number)
+        {
+            return _isPrime[number];
+        }
     }
 }

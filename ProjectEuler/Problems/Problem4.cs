@@ -17,7 +17,7 @@ namespace ProjectEuler.Problems
 
         private IEnumerable<long> GetThreeDigitProducts()
         {
-            var range = Integer.GetAllNDigitNumbers(NumDigits);
+            var range = Integer.GetNumberOfLength(NumDigits);
 
             for (var left = range.Lower; left < range.Upper; left++)
                 for (var right = left; right < range.Upper; right++)

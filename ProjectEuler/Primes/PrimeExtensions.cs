@@ -1,4 +1,5 @@
-﻿using ProjectEuler.Math;
+﻿using System;
+using ProjectEuler.Math;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,23 +9,28 @@ namespace ProjectEuler.Primes
     {
         public static long[] GetPrimeFactors(this long value, bool makeDistinct = false)
         {
-            var factors = new List<long>();
+            var factors = new List<long>(4);
 
-            while (value != 1)
+            foreach (var prime in _sieve.Primes)
             {
-                foreach (var prime in _sieve.Primes)
+                var primeWasAdded = false;
+
+                while (prime.Divides(value))
                 {
-                    while (value.IsMultipleOf(prime))
+                    if (!(primeWasAdded && makeDistinct))
                     {
+                        primeWasAdded = true;
                         factors.Add(prime);
-                        value /= prime;
                     }
+
+                    value /= prime;
                 }
+
+                if (value == 1)
+                    break;
             }
 
-            return makeDistinct 
-                ? factors.Distinct().ToArray() 
-                : factors.ToArray();
+            return factors.ToArray();
         }
 
         public static long[] GetUniquePrimeFactors(this long value)

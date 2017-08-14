@@ -31,7 +31,10 @@ namespace ProjectEulerTests
 
         public static void AndSolveTimeShouldBeUnder(this ProblemWithDiagnostics problem, long milliseconds)
         {
-            Assert.IsTrue(problem.Milliseconds < milliseconds);
+            if (problem.Milliseconds >= milliseconds)
+            {
+                throw new Exception($"{problem.Name} took to long to solve.");
+            }
         }
     }
 }

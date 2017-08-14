@@ -1,7 +1,6 @@
 ﻿using System;
 using ProjectEuler.Core;
 using ProjectEuler.Problems;
-using ProjectEuler.Problems.Problem99;
 
 namespace ProjectEuler
 {
@@ -9,7 +8,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new Problem99().WithDiagnostics();
+            var problem = new Problem72().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 

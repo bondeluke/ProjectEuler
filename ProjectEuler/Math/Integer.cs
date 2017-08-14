@@ -6,6 +6,11 @@ namespace ProjectEuler.Math
 {
     public static class Integer
     {
+        public static bool Divides(this long divisor, long value)
+        {
+            return value % divisor == 0;
+        }
+
         public static bool IsMultipleOf(this long value, long divisor)
         {
             return value % divisor == 0;
@@ -63,23 +68,23 @@ namespace ProjectEuler.Math
 
         public static IEnumerable<long> GetNDigitIntegers(byte N)
         {
-            var range = GetAllNDigitNumbers(N);
+            var range = GetNumberOfLength(N);
 
             for (var integer = range.Lower; integer < range.Upper; integer++)
                 yield return integer;
         }
 
-        public static Range GetAllNDigitNumbers(byte N)
+        public static Range GetNumberOfLength(byte length)
         {
-            var lower = 10.Power(N - 1);
-            var upper = 10.Power(N);
+            var lower = 10.Power(length - 1);
+            var upper = 10.Power(length);
 
             return new Range(lower, upper);
         }
 
-        public static IEnumerable<long> Range(long lower, long upper)
+        public static IEnumerable<long> Range(long lower, long upper, long step = 1)
         {
-            for (var number = lower; number <= upper; number++)
+            for (var number = lower; number < upper; number += step)
                 yield return number;
         }
 
@@ -91,7 +96,7 @@ namespace ProjectEuler.Math
         public static long[] GetLesserCoPrimes(this long number)
         {
             // Not performant
-            return Range(1, number - 1)
+            return Range(1, number)
                 .Where(n => n.IsCoPrimeWith(number))
                 .ToArray();
         }
@@ -106,6 +111,20 @@ namespace ProjectEuler.Math
                 a = b;
                 b = a1 % b;
             }
+        }
+
+        public static long Lcm(this long a, long b)
+        {
+            // Follow from the fact that lcm(a, b) * gcd (a, b) = ab;
+            return a * b / Gcd(a, b);
+        }
+
+        public static DivisionResult Divide(this long number, long divisor)
+        {
+            var remainder = number % divisor;
+            var quotient = (number - remainder) / divisor;
+
+            return new DivisionResult(quotient, remainder);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ProjectEuler.Problems
     {
         public object Solve()
         {
-            var integers = Integer.Range(1, 100).ToArray();
+            var integers = Integer.Range(1, 101).ToArray();
 
             var sumOfSquares = integers.Select(Integer.Squared).Sum();
 

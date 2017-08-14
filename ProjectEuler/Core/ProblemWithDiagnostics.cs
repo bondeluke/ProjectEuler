@@ -27,5 +27,7 @@ namespace ProjectEuler.Core
 
             return solutiuon;
         }
+
+        public string Name => _problem.GetType().Name;
     }
 }

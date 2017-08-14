@@ -8,7 +8,7 @@ namespace ProjectEulerTests.Primes
     public class PrimeCollectionTests
     {
         [TestMethod]
-        public void PrimeCollectionShouldAssessPrimalityCorrectly()
+        public void IsPrime()
         {
             var collection = new PrimeCollection();
 
@@ -27,7 +27,7 @@ namespace ProjectEulerTests.Primes
         }
 
         [TestMethod]
-        public void PrimeCollectionShouldKnowPrimeOrder()
+        public void GetNthPrime()
         {
             var collection = new PrimeCollection();
 
