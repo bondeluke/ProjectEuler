@@ -1,86 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F053A098-9705-4977-AFCA-8C5762DD2D54}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProjectEuler</RootNamespace>
-    <AssemblyName>ProjectEuler</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Authors>Luke Bonde</Authors>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>ProjectEuler.Program</StartupObject>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="FibonacciSequence.cs" />
-    <Compile Include="FileHelper.cs" />
-    <Compile Include="Math\Integer.cs" />
-    <Compile Include="Math\Range.cs" />
-    <Compile Include="Primes\PrimeCollection.cs" />
-    <Compile Include="Primes\PrimeExtensions.cs" />
-    <Compile Include="Core\ProblemExtensions.cs" />
-    <Compile Include="Core\IProjectEulerProblem.cs" />
-    <Compile Include="Problems\LargestPalindromeProduct.cs" />
-    <Compile Include="Problems\Problem99\LargestExponential.cs" />
-    <Compile Include="Problems\Problem99\LineInfo.cs" />
-    <Compile Include="Problems\SpiralPrimes.cs" />
-    <Compile Include="Problems\SumSquareDifference.cs" />
-    <Compile Include="Problems\TenThousandFirstPrime.cs" />
-    <Compile Include="Primes\PrimeSieve.cs" />
-    <Compile Include="Problems\EvenFibonacciNumbers.cs" />
-    <Compile Include="Problems\LargestPrimeFactor.cs" />
-    <Compile Include="Problems\MultiplesOf3And5.cs" />
-    <Compile Include="Problems\SumOfPrimes.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\ProblemWithDiagnostics.cs" />
-    <Compile Include="StringExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Problems\Problem99\numbers.txt" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
