@@ -19,6 +19,11 @@ namespace ProjectEuler.Math
             return Convert.ToInt64(value);
         }
 
+        public static int ToInt(this string value)
+        {
+            return Convert.ToInt32(value);
+        }
+
         public static double Sqrt(this long value)
         {
             return System.Math.Sqrt(value);

@@ -1,6 +1,4 @@
-﻿using System;
-using ProjectEuler.Core;
-using ProjectEuler.Primes;
+﻿using ProjectEuler.Core;
 using System.IO;
 using System.Collections.Generic;
 using ProjectEuler.Math;
@@ -35,10 +33,12 @@ namespace ProjectEuler.Problems.Problem99
 
         private bool IsGreaterThan(LineInfo line1, LineInfo line2)
         {
-            var factors1 = line1.Base.ToLong().GetPrimeFactors();
-            var factors2 = line2.Base.ToLong().GetPrimeFactors();
+            return Logarithm(line1) > Logarithm(line2);
+        }
 
-            return true;
+        private double Logarithm(LineInfo line)
+        {
+            return line.Exponent * System.Math.Log(line.Base);
         }
 
         private static LineInfo[] GetLines()
@@ -53,8 +53,8 @@ namespace ProjectEuler.Problems.Problem99
             {
                 var lineNumber = i + 1;
                 var pair = lines[i].Split(',');
-                var @base = Convert.ToInt32(pair[0]);
-                var exponent = Convert.ToInt32(pair[1]);
+                var @base = pair[0].ToInt();
+                var exponent = pair[1].ToInt();
 
                 lineInfo.Add(new LineInfo(lineNumber, @base, exponent));
             }

@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
 
 namespace ProjectEuler
 {
@@ -7,10 +6,9 @@ namespace ProjectEuler
     {
         public static string GetFullPath(string relativePath)
         {
-            var path = new DirectoryInfo(Assembly.GetEntryAssembly().Location);
-            var parent = path.Parent.Parent.FullName;
+            var path = Directory.GetCurrentDirectory();
 
-            return Path.Combine(parent, relativePath);
+            return Path.Combine(path, relativePath);
         }
     }
 }
