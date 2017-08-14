@@ -6,11 +6,11 @@ namespace ProjectEuler.Primes
 {
     class PrimeCollection
     {
-        public List<long> _primes;
+        private readonly List<long> _primes;
 
         private long _greatestChecked;
 
-        const long _root = 2 * 3 * 5;
+        private const long Root = 2 * 3 * 5;
 
         public PrimeCollection()
         {
@@ -19,7 +19,7 @@ namespace ProjectEuler.Primes
                 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
             };
 
-            _greatestChecked = _root - 1; // Number of the form 30k + 29
+            _greatestChecked = Root - 1; // Number of the form 30k + 29
         }
 
         public bool IsPrime(long number)
@@ -53,7 +53,7 @@ namespace ProjectEuler.Primes
 
         private void PopulatePrimesUpTo(long upto)
         {
-            for (long thirtyk = _greatestChecked + 1; thirtyk <= upto; thirtyk += _root)
+            for (var thirtyk = _greatestChecked + 1; thirtyk <= upto; thirtyk += Root)
             {
                 AddIfPrime(thirtyk + 1);
                 AddIfPrime(thirtyk + 7);
@@ -81,7 +81,7 @@ namespace ProjectEuler.Primes
             var index = n - 1; // The first prime n=1 will be at index=0
             while (_primes.Count <= index)
             {
-                PopulatePrimesUpTo(_greatestChecked + _root);
+                PopulatePrimesUpTo(_greatestChecked + Root);
             }
 
             return _primes[index];

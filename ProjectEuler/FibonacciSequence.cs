@@ -1,11 +1,20 @@
-﻿namespace ProjectEuler
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace ProjectEuler
 {
-    class FibonacciSequence : Sequence
+    class FibonacciSequence : IEnumerable<long>
     {
+        public FibonacciSequence()
+        {
+            _prev = 0;
+            _current = 1;
+        }
+
         private long _prev;
         private long _current;
 
-        public override long Next()
+        public long Next()
         {
             var returnValue = _current;
             var next = _current + _prev;
@@ -15,10 +24,44 @@
             return returnValue;
         }
 
-        public override void Reset()
+        public IEnumerator<long> GetEnumerator()
         {
-            _prev = 0;
-            _current = 1;
+            return new FibonacciEnumerator(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        private class FibonacciEnumerator : IEnumerator<long>
+        {
+            private readonly FibonacciSequence _seq;
+
+            public FibonacciEnumerator(FibonacciSequence seq)
+            {
+                _seq = seq;
+            }
+
+            public void Dispose()
+            {
+            }
+
+            public bool MoveNext()
+            {
+                _seq.Next();
+
+                return true;
+            }
+
+            public void Reset()
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public long Current => _seq._current;
+
+            object IEnumerator.Current => Current;
         }
     }
 }

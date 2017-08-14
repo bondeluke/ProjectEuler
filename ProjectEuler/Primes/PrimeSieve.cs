@@ -7,7 +7,7 @@ namespace ProjectEuler.Primes
     {
         private bool[] _isPrime;
 
-        private int _limit;
+        private readonly int _limit;
 
         public PrimeSieve(int limit) : base(256)
         {
@@ -20,7 +20,7 @@ namespace ProjectEuler.Primes
 
         private void AddPrimesToList()
         {
-            for (int i = 0; i < _limit; i++)
+            for (var i = 0; i < _limit; i++)
             {
                 if (_isPrime[i])
                 {

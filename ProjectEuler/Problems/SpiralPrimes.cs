@@ -31,7 +31,7 @@ namespace ProjectEuler.Problems
             return layer * 2 + 1;
         }
 
-        private long GetNumberAlongDiagonal(int layer, byte diagonal)
+        private static long GetNumberAlongDiagonal(int layer, byte diagonal)
         {
             return (layer * 2 + 1).ToLong().Squared() - 2 * diagonal * layer;
         }

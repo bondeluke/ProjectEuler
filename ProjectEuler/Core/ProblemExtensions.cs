@@ -1,6 +1,4 @@
-﻿using ProjectEuler.Core;
-
-namespace ProjectEuler
+﻿namespace ProjectEuler.Core
 {
     static class ProblemExtensions
     {

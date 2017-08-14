@@ -41,7 +41,7 @@ namespace ProjectEuler.Problems.Problem99
             return true;
         }
 
-        private LineInfo[] GetLines()
+        private static LineInfo[] GetLines()
         {
             var path = FileHelper.GetFullPath("Problems\\Problem99\\numbers.txt");
 
@@ -49,7 +49,7 @@ namespace ProjectEuler.Problems.Problem99
 
             var lineInfo = new List<LineInfo>();
 
-            for (int i = 0; i < lines.Length; i++)
+            for (var i = 0; i < lines.Length; i++)
             {
                 var lineNumber = i + 1;
                 var pair = lines[i].Split(',');

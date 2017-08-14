@@ -8,13 +8,12 @@ namespace ProjectEuler.Core
         {
             _problem = problem;
             _stopWatch = new Stopwatch();
-            _milliseconds = 0;
+            Milliseconds = 0;
         }
 
-        private IProjectEulerProblem _problem;
-        private Stopwatch _stopWatch;
-        public long Milliseconds => _milliseconds;
-        private long _milliseconds;
+        private readonly IProjectEulerProblem _problem;
+        private readonly Stopwatch _stopWatch;
+        public long Milliseconds { get; private set; }
 
         public object Solve()
         {
@@ -24,7 +23,7 @@ namespace ProjectEuler.Core
             var solutiuon = _problem.Solve();
 
             _stopWatch.Stop();
-            _milliseconds = _stopWatch.ElapsedMilliseconds;
+            Milliseconds = _stopWatch.ElapsedMilliseconds;
 
             return solutiuon;
         }

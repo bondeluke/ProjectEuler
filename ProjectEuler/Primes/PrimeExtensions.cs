@@ -38,7 +38,7 @@ namespace ProjectEuler.Primes
             return _primes.IsPrime(number);
         }
 
-        private static PrimeCollection _primes = new PrimeCollection();
-        private static PrimeSieve _sieve = new PrimeSieve(2000000);
+        private static readonly PrimeCollection _primes = new PrimeCollection();
+        private static readonly PrimeSieve _sieve = new PrimeSieve(2000000);
     }
 }

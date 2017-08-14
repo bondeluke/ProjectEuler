@@ -1,6 +1,6 @@
-﻿using ProjectEuler.Problems;
-using ProjectEuler.Problems.Problem99;
-using System;
+﻿using System;
+using ProjectEuler.Core;
+using ProjectEuler.Problems;
 
 namespace ProjectEuler
 {
@@ -8,7 +8,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new LargestExponential().WithDiagnostics();
+            var problem = new EvenFibonacciNumbers().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 

@@ -6,9 +6,9 @@
         {
             if (subject.Length <= 1)
                 return true;
-            else
-                return subject.GetFirstChar() == subject.GetLastChar() && 
-                    subject.StripEnds(1).IsPalindrome();
+
+            return subject.GetFirstChar() == subject.GetLastChar() &&
+                   subject.StripEnds(1).IsPalindrome();
         }
 
         private static char GetFirstChar(this string subject)

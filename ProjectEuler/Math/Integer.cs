@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProjectEuler.Math
 {
@@ -12,11 +13,7 @@ namespace ProjectEuler.Math
 
         public static bool IsMultipleOf(this long value, params long[] divisors)
         {
-            foreach (var divisor in divisors)
-                if (value.IsMultipleOf(divisor))
-                    return true;
-
-            return false;
+            return divisors.Any(divisor => value.IsMultipleOf(divisor));
         }
 
         public static bool IsEven(this long value)
@@ -68,14 +65,14 @@ namespace ProjectEuler.Math
         {
             var range = GetAllNDigitNumbers(N);
 
-            for (long integer = range.Lower; integer < range.Upper; integer++)
+            for (var integer = range.Lower; integer < range.Upper; integer++)
                 yield return integer;
         }
 
         public static Range GetAllNDigitNumbers(byte N)
         {
-            long lower = Convert.ToInt64(System.Math.Pow(10, N - 1));
-            long upper = Convert.ToInt64(System.Math.Pow(10, N));
+            var lower = Convert.ToInt64(System.Math.Pow(10, N - 1));
+            var upper = Convert.ToInt64(System.Math.Pow(10, N));
 
             return new Range(lower, upper);
         }
