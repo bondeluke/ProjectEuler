@@ -71,8 +71,8 @@ namespace ProjectEuler.Math
 
         public static Range GetAllNDigitNumbers(byte N)
         {
-            var lower = Convert.ToInt64(System.Math.Pow(10, N - 1));
-            var upper = Convert.ToInt64(System.Math.Pow(10, N));
+            var lower = 10.Power(N-1).ToLong();
+            var upper = 10.Power(N).ToLong();
 
             return new Range(lower, upper);
         }
@@ -86,11 +86,6 @@ namespace ProjectEuler.Math
         public static IEnumerable<long> First(int upper)
         {
             return Range(1, upper);
-        }
-
-        public static long ToLong(this int value)
-        {
-            return Convert.ToInt64(value);
         }
     }
 }

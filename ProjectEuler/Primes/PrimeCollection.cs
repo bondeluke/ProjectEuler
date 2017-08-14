@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
@@ -27,7 +28,7 @@ namespace ProjectEuler.Primes
             if (_greatestChecked > number)
                 return _primes.Any(p => p == number);
 
-            var sqrt = Convert.ToInt64(System.Math.Ceiling(System.Math.Sqrt(number)));
+            var sqrt = number.Sqrt().Ceiling().ToLong();
 
             if (sqrt > _greatestChecked)
             {
