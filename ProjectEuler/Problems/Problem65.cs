@@ -14,19 +14,19 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            const int term = 20;
+            const int term = 100;
 
-            LogFirstConvergents(50);
+            //LogFirstConvergents(term);
 
-            return GetConvergent(term).Numerator;
+            return GetConvergent(term).Numerator.SumDigits();
         }
 
-        private Fraction GetConvergent(int n) => 2 + GetNextExpansion(n - 1, 1);
+        private BigFraction GetConvergent(int n) => 2 + GetNextExpansion(n - 1, 1);
 
-        private Fraction GetNextExpansion(int expansionsLeft, int nthTerm)
+        private BigFraction GetNextExpansion(int expansionsLeft, int nthTerm)
         {
             if (expansionsLeft == 0)
-                return 0;
+                return BigFraction.Zero;
 
             var d = GetNthTerm(nthTerm) + GetNextExpansion(expansionsLeft - 1, nthTerm + 1);
             return 1 / d;

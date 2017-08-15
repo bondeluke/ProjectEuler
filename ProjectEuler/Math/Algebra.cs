@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace ProjectEuler.Math
 {
@@ -11,6 +12,8 @@ namespace ProjectEuler.Math
 
         public static bool AreCoprime(long a, long b) => Gcd(a.Abs(), b.Abs()) == 1;
 
+        public static bool AreCoprime(BigInteger a, BigInteger b) => Gcd(a.Abs(), b.Abs()) == 1;
+
         public static long[] GetTotatives(this long number)
         {
             // Not performant
@@ -20,6 +23,19 @@ namespace ProjectEuler.Math
         }
 
         public static long Gcd(long a, long b)
+        {
+            // http://www.vcskicks.com/euclidean-gcd.php
+
+            while (true)
+            {
+                if (b == 0) return a;
+                var a1 = a;
+                a = b;
+                b = a1 % b;
+            }
+        }
+
+        public static BigInteger Gcd(BigInteger a, BigInteger b)
         {
             // http://www.vcskicks.com/euclidean-gcd.php
 

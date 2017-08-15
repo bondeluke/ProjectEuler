@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEuler;
 using ProjectEuler.Problems;
 using ProjectEuler.Problems.Problem99;
 
@@ -10,6 +11,8 @@ namespace ProjectEulerTests
         [TestMethod]
         public void TestSolutionsAndTimeToSolve()
         {
+            var logger = new Logger();
+
             new Problem1()
                 .SolutionShouleBe(233168)
                 .AndSolveTimeShouldBeUnder(30);
@@ -49,6 +52,10 @@ namespace ProjectEulerTests
             new Problem72()
                 .SolutionShouleBe(303963552391)
                 .AndSolveTimeShouldBeUnder(2000);
+
+            new Problem65(logger)
+                .SolutionShouleBe(272)
+                .AndSolveTimeShouldBeUnder(50);
 
             new Problem99()
                 .SolutionShouleBe(709)

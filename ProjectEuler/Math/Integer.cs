@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using static System.Int32;
 
 namespace ProjectEuler.Math
@@ -57,5 +58,7 @@ namespace ProjectEuler.Math
         }
 
         public static int SumDigits(this long number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
+
+        public static int SumDigits(this BigInteger number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
     }
 }

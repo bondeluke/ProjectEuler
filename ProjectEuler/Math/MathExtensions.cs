@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace ProjectEuler.Math
 {
@@ -15,6 +16,8 @@ namespace ProjectEuler.Math
         public static int ToInt(this double value) => Convert.ToInt32(value);
 
         public static long Abs(this long value) => System.Math.Abs(value);
+
+        public static BigInteger Abs(this BigInteger value) => value.Sign >= 0 ? value : value * -1;
 
         public static double Sqrt(this long value) => System.Math.Sqrt(value);
 
