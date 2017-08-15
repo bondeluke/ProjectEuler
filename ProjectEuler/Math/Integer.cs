@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using static System.Int32;
 
 namespace ProjectEuler.Math
 {
@@ -54,5 +55,7 @@ namespace ProjectEuler.Math
 
             return new DivisionResult(quotient, remainder);
         }
+
+        public static int SumDigits(this long number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
     }
 }

@@ -16,7 +16,7 @@ namespace ProjectEulerTests
 
             new Problem2()
                 .SolutionShouleBe(4613732)
-                .AndSolveTimeShouldBeUnder(10);
+                .AndSolveTimeShouldBeUnder(25);
 
             new Problem3()
                 .SolutionShouleBe(6857)

@@ -1,41 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ProjectEuler.Core;
+﻿using ProjectEuler.Core;
 using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems
 {
-    class Problem65 : IProjectEulerProblem
+    public class Problem65 : IProjectEulerProblem
     {
+        public Problem65(ILogWritable log)
+        {
+            _log = log;
+        }
+
+        private readonly ILogWritable _log;
+
         public object Solve()
         {
-            const int term = 2;
+            const int term = 20;
 
-            return GetTerm(term);
+            LogFirstConvergents(50);
+
+            return GetConvergent(term).Numerator;
         }
 
-        private Fraction GetTerm(int n) => 2 + GetNthFraction(n);
+        private Fraction GetConvergent(int n) => 2 + GetNextExpansion(n - 1, 1);
 
-        private Fraction GetNthFraction(int n)
+        private Fraction GetNextExpansion(int expansionsLeft, int nthTerm)
         {
-            if (n == 1) return Fraction.New(0, 1);
+            if (expansionsLeft == 0)
+                return 0;
 
-            var denominator = n % 3 == 0
-                ? n * 2 / 3
+            var d = GetNthTerm(nthTerm) + GetNextExpansion(expansionsLeft - 1, nthTerm + 1);
+            return 1 / d;
+        }
+
+        // n => term
+        // 1 -> 1
+        // 2 -> 2
+        // 3 -> 1
+        // 4 -> 1
+        // 5 -> 4
+        private long GetNthTerm(int n)
+        {
+            var result = (n.ToLong() + 3).DivideBy(3);
+
+            return result.Remainder == 2
+                ? result.Quotient * 2
                 : 1;
-
-            return Fraction.New(0, 0);
         }
 
-        private Fraction GetNthSomething(int n)
+        private void LogFirstConvergents(int limit)
         {
-            var numerator = 1;
-
-            var term = 1;
-            var denominator = term + GetNthSomething(n);
-
-            return numerator / denominator;
+            for (var i = 1; i < limit; i++)
+            {
+                // Long overflow at term 39
+                _log.WriteLine(GetConvergent(i).Numerator);
+            }
         }
     }
 }

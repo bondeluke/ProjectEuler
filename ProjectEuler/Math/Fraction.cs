@@ -22,10 +22,13 @@ namespace ProjectEuler.Math
         public long Numerator { get; }
         public long Denominator { get; }
         public bool IsReduced => Algebra.AreCoprime(Numerator, Denominator);
+        public bool IsWhole => Denominator.Divides(Numerator);
 
         public static Fraction New(long numerator, long denominator) => new Fraction(numerator, denominator);
 
-        public override string ToString() => $"{Numerator}/{Denominator}";
+        public override string ToString() => IsWhole ? (Numerator/Denominator).ToString() : $"{Numerator}/{Denominator}";
+
+        public static implicit operator Fraction(long number) => number.ToFraction();
 
         public static Fraction operator +(Fraction left, Fraction right) => New(left.Numerator * right.Denominator + left.Denominator * right.Numerator, left.Denominator * right.Denominator);
 

@@ -13,26 +13,20 @@ namespace ProjectEuler
             _hasContent = false;
         }
 
-        public void WriteLine(string line)
+        public void WriteLine(object line)
         {
             _log += line + Environment.NewLine;
             _hasContent = true;
         }
 
-        public bool HasContent()
-        {
-            return _hasContent;
-        }
+        public bool HasContent() => _hasContent;
 
-        public string GetLog()
-        {
-            return _log;
-        }
+        public string GetLog() => _log;
     }
 
     public interface ILogWritable
     {
-        void WriteLine(string line);
+        void WriteLine(object line);
     }
 
     public interface ILogReadable

@@ -80,5 +80,13 @@ namespace ProjectEulerTests.Math
             123L.IsPalindrome().ShouldBeFalse();
             1321L.IsPalindrome().ShouldBeFalse();
         }
+
+        [TestMethod]
+        public void DigitSum()
+        {
+            1L.SumDigits().ShouldBe(1);
+            12L.SumDigits().ShouldBe(3);
+            555L.SumDigits().ShouldBe(15);
+        }
     }
 }
