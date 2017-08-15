@@ -9,10 +9,7 @@ namespace ProjectEuler.Problems
     {
         public object Solve()
         {
-            const long start = 1L; 
-            const long end = 999L;
-
-            return start.To(end)
+            return Integer.Range(1, 1000)
                 .Where(value => value.IsMultipleOfAny(3, 5))
                 .Sum();
         }

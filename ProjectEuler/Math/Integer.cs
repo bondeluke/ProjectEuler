@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace ProjectEuler.Math
 {
     public static class Integer
     {
-        public static bool Divides(this long divisor, long value)
-        {
-            return value % divisor == 0;
-        }
-
         public static bool IsMultipleOf(this long value, long divisor)
         {
             return value % divisor == 0;
@@ -36,34 +30,14 @@ namespace ProjectEuler.Math
             return value * value;
         }
 
+        public static long Product(this IEnumerable<long> values)
+        {
+            return values.Aggregate((left, right) => left * right);
+        }
+
         public static bool IsPalindrome(this long value)
         {
             return value.ToString().IsPalindrome();
-        }
-
-        public static IEnumerable<long> To(this long from, long to)
-        {
-            while (from <= to)
-                yield return from++;
-        }
-
-        public static long Largest(this IEnumerable<long> collection)
-        {
-            return collection.Condition(long.MinValue, (x, y) => x > y);
-        }
-
-        public static long Smallest(this IEnumerable<long> collection)
-        {
-            return collection.Condition(long.MaxValue, (x, y) => x < y);
-        }
-
-        private static long Condition(this IEnumerable<long> collection, long candidate, Func<long, long, bool> condition)
-        {
-            foreach (var number in collection)
-                if (condition(number, candidate))
-                    candidate = number;
-
-            return candidate;
         }
 
         public static IEnumerable<long> GetNDigitIntegers(byte N)
@@ -86,37 +60,6 @@ namespace ProjectEuler.Math
         {
             for (var number = lower; number < upper; number += step)
                 yield return number;
-        }
-
-        public static bool IsCoPrimeWith(this long number, long candidate)
-        {
-            return number.Gcd(candidate) == 1;
-        }
-
-        public static long[] GetLesserCoPrimes(this long number)
-        {
-            // Not performant
-            return Range(1, number)
-                .Where(n => n.IsCoPrimeWith(number))
-                .ToArray();
-        }
-
-        public static long Gcd(this long a, long b)
-        {
-            // http://www.vcskicks.com/euclidean-gcd.php
-            while (true)
-            {
-                if (b == 0) return a;
-                var a1 = a;
-                a = b;
-                b = a1 % b;
-            }
-        }
-
-        public static long Lcm(this long a, long b)
-        {
-            // Follow from the fact that lcm(a, b) * gcd (a, b) = ab;
-            return a * b / Gcd(a, b);
         }
 
         public static DivisionResult Divide(this long number, long divisor)

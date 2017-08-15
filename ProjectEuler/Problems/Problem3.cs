@@ -1,4 +1,5 @@
-﻿using ProjectEuler.Core;
+﻿using System.Linq;
+using ProjectEuler.Core;
 using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
@@ -11,7 +12,7 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            return LargeNumber.GetPrimeFactors().Largest();
+            return LargeNumber.GetPrimeFactors().Max();
         }
     }
 }

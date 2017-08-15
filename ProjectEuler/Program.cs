@@ -8,7 +8,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var problem = new Problem25().WithDiagnostics();
+            var problem = new Problem357().WithDiagnostics();
 
             Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
 

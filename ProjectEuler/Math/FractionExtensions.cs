@@ -4,7 +4,7 @@
     {
         public static Fraction Reduce(this Fraction fraction)
         {
-            var gcd = fraction.Numerator.Gcd(fraction.Denominator);
+            var gcd = Algebra.Gcd(fraction.Numerator, fraction.Denominator);
 
             return new Fraction(fraction.Numerator / gcd, fraction.Denominator / gcd);
         }

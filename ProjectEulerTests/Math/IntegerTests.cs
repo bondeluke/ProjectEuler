@@ -25,56 +25,6 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void Gcd()
-        {
-            1L.Gcd(1).ShouldBe(1);
-            2L.Gcd(3).ShouldBe(1);
-            4L.Gcd(12).ShouldBe(4);
-            6L.Gcd(12).ShouldBe(6);
-            10L.Gcd(25).ShouldBe(5);
-            36L.Gcd(15).ShouldBe(3);
-        }
-
-        [TestMethod]
-        public void IsCoPrime()
-        {
-            6L.IsCoPrimeWith(1).ShouldBeTrue();
-            6L.IsCoPrimeWith(2).ShouldBeFalse();
-            6L.IsCoPrimeWith(3).ShouldBeFalse();
-            6L.IsCoPrimeWith(4).ShouldBeFalse();
-            6L.IsCoPrimeWith(5).ShouldBeTrue();
-            6L.IsCoPrimeWith(6).ShouldBeFalse();
-        }
-
-        [TestMethod]
-        public void Lcm()
-        {
-            Integer.Lcm(1, 1).ShouldBe(1);
-            Integer.Lcm(1, 3).ShouldBe(3);
-            Integer.Lcm(2, 3).ShouldBe(6);
-            Integer.Lcm(9, 24).ShouldBe(72);
-            Integer.Lcm(24, 9).ShouldBe(72);
-        }
-
-        [TestMethod]
-        public void GetLesserCoPrimes()
-        {
-            var coPrimes = 6L.GetLesserCoPrimes();
-
-            coPrimes.Length.ShouldBe(2);
-            coPrimes[0].ShouldBe(1);
-            coPrimes[1].ShouldBe(5);
-
-            coPrimes = 5L.GetLesserCoPrimes();
-
-            coPrimes.Length.ShouldBe(4);
-            coPrimes[0].ShouldBe(1);
-            coPrimes[1].ShouldBe(2);
-            coPrimes[2].ShouldBe(3);
-            coPrimes[3].ShouldBe(4);
-        }
-
-        [TestMethod]
         public void Range()
         {
             Integer.Range(0, 0).ToArray().Length.ShouldBe(0);

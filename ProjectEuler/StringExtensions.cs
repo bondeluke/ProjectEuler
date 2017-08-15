@@ -1,4 +1,6 @@
-﻿namespace ProjectEuler
+﻿using System.Collections.Generic;
+
+namespace ProjectEuler
 {
     public static class StringExtensions
     {
@@ -24,6 +26,11 @@
         private static string StripEnds(this string value, int distance)
         {
             return value.Substring(distance, value.Length - 1 - distance);
+        }
+
+        public static string StringJoin(this IEnumerable<long> values, string seperator = ", ")
+        {
+            return string.Join(seperator, values);
         }
     }
 }

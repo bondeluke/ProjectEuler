@@ -12,7 +12,7 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            return GetThreeDigitProducts().Where(Integer.IsPalindrome).Largest();
+            return GetThreeDigitProducts().Where(Integer.IsPalindrome).Max();
         }
 
         private IEnumerable<long> GetThreeDigitProducts()

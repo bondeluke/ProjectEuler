@@ -26,7 +26,7 @@ namespace ProjectEuler.Math
             if (left.Denominator == right.Denominator)
                 return New(left.Numerator + right.Numerator, left.Denominator);
 
-            var lcm = Integer.Lcm(left.Denominator, right.Denominator);
+            var lcm = Algebra.Lcm(left.Denominator, right.Denominator);
 
             return left.Scale(lcm / left.Denominator) + right.Scale(lcm / right.Denominator);
         }
