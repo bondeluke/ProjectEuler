@@ -9,7 +9,7 @@ namespace ProjectEuler.Math
 
         public static bool Divides(this long divisor, long value) => value % divisor == 0;
 
-        public static bool AreCoprime(long a, long b) => Gcd(a, b) == 1;
+        public static bool AreCoprime(long a, long b) => Gcd(a.Abs(), b.Abs()) == 1;
 
         public static long[] GetTotatives(this long number)
         {

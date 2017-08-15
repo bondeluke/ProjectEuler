@@ -38,6 +38,14 @@ namespace ProjectEulerTests.Math
             Algebra.AreCoprime(6, 3).ShouldBeFalse();
             Algebra.AreCoprime(6, 4).ShouldBeFalse();
             Algebra.AreCoprime(6, 6).ShouldBeFalse();
+
+            Algebra.AreCoprime(-2, 4).ShouldBeFalse();
+            Algebra.AreCoprime(-2, -4).ShouldBeFalse();
+            Algebra.AreCoprime(2, -4).ShouldBeFalse();
+
+            Algebra.AreCoprime(-2, 3).ShouldBeTrue();
+            Algebra.AreCoprime(-2, -3).ShouldBeTrue();
+            Algebra.AreCoprime(2, -3).ShouldBeTrue();
         }
 
         [TestMethod]

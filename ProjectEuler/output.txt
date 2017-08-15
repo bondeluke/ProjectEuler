@@ -27,4 +27,4 @@
 970: 2, 5, 97
 
 Solution: 0.
-Time elapsed: 3115 millisecond(s).
+Time elapsed: 3345 millisecond(s).

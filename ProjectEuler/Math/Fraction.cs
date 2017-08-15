@@ -6,6 +6,15 @@ namespace ProjectEuler.Math
     {
         public Fraction(long numerator, long denominator)
         {
+            if (denominator == 0)
+                throw new Exception("Denominator cannot be zero");
+
+            if (denominator < 0)
+            {
+                numerator *= -1;
+                denominator *= -1;
+            }
+
             Numerator = numerator;
             Denominator = denominator;
         }
@@ -18,25 +27,29 @@ namespace ProjectEuler.Math
 
         public override string ToString() => $"{Numerator}/{Denominator}";
 
-        public static Fraction operator +(Fraction left, Fraction right)
-        {
-            if (left.Denominator == right.Denominator)
-                return New(left.Numerator + right.Numerator, left.Denominator);
-
-            var lcm = Algebra.Lcm(left.Denominator, right.Denominator);
-
-            return left.Scale(lcm / left.Denominator) + right.Scale(lcm / right.Denominator);
-        }
+        public static Fraction operator +(Fraction left, Fraction right) => New(left.Numerator * right.Denominator + left.Denominator * right.Numerator, left.Denominator * right.Denominator);
 
         public static Fraction operator -(Fraction left, Fraction right) => left + -1 * right;
 
         public static Fraction operator +(long left, Fraction right) => New(left, 1) + right;
 
-        public static Fraction operator -(long left, Fraction right) => New(left, 1) - right;
+        public static Fraction operator +(Fraction left, long right) => right + left;
+
+        public static Fraction operator -(long left, Fraction right) => left + -1 * right;
+
+        public static Fraction operator -(Fraction left, long right) => left + -1 * right;
 
         public static Fraction operator *(long scalar, Fraction right) => New(right.Numerator * scalar, right.Denominator);
 
+        public static Fraction operator *(Fraction left, long scalar) => scalar * left;
+
+        public static Fraction operator /(long scalar, Fraction right) => scalar * right.Invert();
+
+        public static Fraction operator /(Fraction left, long scalar) => New(left.Numerator, left.Denominator * scalar);
+
         public static Fraction operator *(Fraction left, Fraction right) => New(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
+
+        public static Fraction operator /(Fraction left, Fraction right) => left * right.Invert();
 
         public bool Equals(Fraction other)
         {

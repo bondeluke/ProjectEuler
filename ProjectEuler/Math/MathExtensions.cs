@@ -14,6 +14,8 @@ namespace ProjectEuler.Math
 
         public static int ToInt(this double value) => Convert.ToInt32(value);
 
+        public static long Abs(this long value) => System.Math.Abs(value);
+
         public static double Sqrt(this long value) => System.Math.Sqrt(value);
 
         public static double Sqrt(this int value) => System.Math.Sqrt(value);
