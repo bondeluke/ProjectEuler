@@ -1,4 +1,5 @@
-﻿using ProjectEuler.Core;
+﻿using System.Linq;
+using ProjectEuler.Core;
 using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems
@@ -10,18 +11,12 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            long sum = 0;
-
             var seq = new FibonacciSequence();
 
-            foreach (var fib in seq)
-            {
-                if (fib > Limit)
-                    break;
-
-                if (fib.IsEven())
-                    sum += fib;
-            }
+            var sum = seq.TakeWhile(fib => fib <= Limit)
+                .Where(fib => fib.IsEven)
+                .Select(b => (long)b)
+                .Sum();
 
             return sum;
         }

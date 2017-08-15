@@ -38,6 +38,10 @@ namespace ProjectEulerTests
                 .SolutionShouleBe(142913828922)
                 .AndSolveTimeShouldBeUnder(100);
 
+            new Problem25()
+                .SolutionShouleBe(4782)
+                .AndSolveTimeShouldBeUnder(300);
+
             new Problem58()
                 .SolutionShouleBe(26241)
                 .AndSolveTimeShouldBeUnder(800);
