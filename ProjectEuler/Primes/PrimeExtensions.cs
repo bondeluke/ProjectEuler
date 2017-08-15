@@ -1,7 +1,5 @@
-﻿using System;
-using ProjectEuler.Math;
+﻿using ProjectEuler.Math;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ProjectEuler.Primes
 {
@@ -42,6 +40,11 @@ namespace ProjectEuler.Primes
         public static bool IsPrime(this long number)
         {
             return _primes.IsPrime(number);
+        }
+
+        public static bool IsComposite(this long number)
+        {
+            return !IsPrime(number);
         }
 
         private static readonly PrimeCollection _primes = new PrimeCollection();

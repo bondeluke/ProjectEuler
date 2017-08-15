@@ -15,8 +15,7 @@ namespace ProjectEuler.Problems
 
             var sum = seq.TakeWhile(fib => fib <= Limit)
                 .Where(fib => fib.IsEven)
-                .Select(b => (long)b)
-                .Sum();
+                .Sum(b => (long) b);
 
             return sum;
         }

@@ -33,7 +33,7 @@ namespace ProjectEuler.Math
             return Gcd(number, candidate) == 1;
         }
 
-        public static long[] GetLesserCoPrimes(this long number)
+        public static long[] GetTotatives(this long number)
         {
             // Not performant
             return Integer.Range(1, number)
@@ -59,5 +59,12 @@ namespace ProjectEuler.Math
             // Follow from the fact that lcm(a, b) * gcd (a, b) = ab;
             return a * b / Gcd(a, b);
         }
+
+        public static long Phi(this long number)
+        {
+            return _sieve.Phi(number);
+        }
+
+        private static readonly PhiSieve _sieve = new PhiSieve(1000000);
     }
 }

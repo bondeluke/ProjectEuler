@@ -67,7 +67,7 @@ namespace ProjectEuler.Primes
             }
         }
 
-        private readonly Lazy<long[]> _rootLesserCoPrimes = new Lazy<long[]>(() => Root.GetLesserCoPrimes());
+        private readonly Lazy<long[]> _rootLesserCoPrimes = new Lazy<long[]>(() => Root.GetTotatives());
 
         private void AddIfPrime(long candidate)
         {

@@ -33,7 +33,7 @@ namespace ProjectEulerTests
         {
             if (problem.Milliseconds >= milliseconds)
             {
-                throw new Exception($"{problem.Name} took to long to solve.");
+                throw new Exception($"{problem.Name} took too long to solve.");
             }
         }
     }

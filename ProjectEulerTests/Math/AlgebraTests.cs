@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectEuler.Math;
@@ -23,10 +22,11 @@ namespace ProjectEulerTests.Math
         public void IsCoPrime()
         {
             6L.IsCoPrimeWith(1).ShouldBeTrue();
+            6L.IsCoPrimeWith(5).ShouldBeTrue();
+
             6L.IsCoPrimeWith(2).ShouldBeFalse();
             6L.IsCoPrimeWith(3).ShouldBeFalse();
             6L.IsCoPrimeWith(4).ShouldBeFalse();
-            6L.IsCoPrimeWith(5).ShouldBeTrue();
             6L.IsCoPrimeWith(6).ShouldBeFalse();
         }
 
@@ -41,21 +41,21 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void GetLesserCoPrimes()
+        public void Totatives()
         {
-            var coPrimes = 6L.GetLesserCoPrimes();
+            var totatives = 6L.GetTotatives();
 
-            coPrimes.Length.ShouldBe(2);
-            coPrimes[0].ShouldBe(1);
-            coPrimes[1].ShouldBe(5);
+            totatives.Length.ShouldBe(2);
+            totatives[0].ShouldBe(1);
+            totatives[1].ShouldBe(5);
 
-            coPrimes = 5L.GetLesserCoPrimes();
+            totatives = 5L.GetTotatives();
 
-            coPrimes.Length.ShouldBe(4);
-            coPrimes[0].ShouldBe(1);
-            coPrimes[1].ShouldBe(2);
-            coPrimes[2].ShouldBe(3);
-            coPrimes[3].ShouldBe(4);
+            totatives.Length.ShouldBe(4);
+            totatives[0].ShouldBe(1);
+            totatives[1].ShouldBe(2);
+            totatives[2].ShouldBe(3);
+            totatives[3].ShouldBe(4);
         }
 
         [TestMethod]
