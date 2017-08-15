@@ -1,3 +1,3 @@
 # Project Euler
 
-This C# solution contains a collection of solutions to problmes from ProjectEuler.net
+This solution contains problems from ProjectEuler.net that I've solved or am actively working on.
