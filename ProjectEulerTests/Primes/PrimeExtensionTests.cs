@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
 namespace ProjectEulerTests.Primes

@@ -18,22 +18,17 @@ namespace ProjectEulerTests.Math
         [TestMethod]
         public void Creation()
         {
-            // Not fancy... 117 characters
             var f = Fraction.New(-1, 3);
             f.Numerator.ShouldBe(-1);
             f.Denominator.ShouldBe(3);
 
-            // A little fancy... 162 characters
-            Fraction.New(1, -3).AssertThat(x =>
-            {
-                x.Numerator.ShouldBe(-1);
-                x.Denominator.ShouldBe(3);
-            });
+            f = Fraction.New(1, -3);
+            f.Numerator.ShouldBe(-1);
+            f.Denominator.ShouldBe(3);
 
-            // Very fancy... 146 characters
-            Fraction.New(-1, -3).Assert()
-                .That(x => x.Numerator.ShouldBe(1))
-                .And(x => f.Denominator.ShouldBe(3));
+            f = Fraction.New(-1, -3);
+            f.Numerator.ShouldBe(1);
+            f.Denominator.ShouldBe(3);
         }
 
         [TestMethod]
