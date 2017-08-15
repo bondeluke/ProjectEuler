@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using ProjectEuler.Core;
 using ProjectEuler.Problems;
 
@@ -6,13 +6,17 @@ namespace ProjectEuler
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var problem = new Problem357().WithDiagnostics();
+            var log = new Logger();
 
-            Console.WriteLine($"Solution: {problem.Solve()}. Time elapsed: {problem.Milliseconds} millisecond(s).");
+            var problem = new Problem357(log).WithDiagnostics();
 
-            Console.ReadLine();
+            var solution = problem.Solve();
+
+            var output = new OutputWriter(log).GetOutput(solution, problem.Milliseconds);
+
+            File.WriteAllText(FileHelper.GetFullPath("output.txt"), output);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ProjectEuler.Problems.Problem99
 {
-    class LineInfo
+    public class LineInfo
     {
         public LineInfo(int lineNumber, int @base, int exponent)
         {
@@ -13,9 +13,6 @@
         public int Base { get; }
         public int Exponent { get; }
 
-        public override string ToString()
-        {
-            return $"{LineNumber}: {Base}^{Exponent}";
-        }
+        public override string ToString() => $"{LineNumber}: {Base}^{Exponent}";
     }
 }

@@ -5,40 +5,25 @@ namespace ProjectEuler.Math
 {
     public static class Integer
     {
-        public static bool IsMultipleOf(this long value, long divisor)
-        {
-            return value % divisor == 0;
-        }
+        public static bool IsMultipleOf(this long value, long divisor) => value % divisor == 0;
 
         public static bool IsMultipleOfAny(this long value, params long[] divisors)
         {
             return divisors.Any(divisor => value.IsMultipleOf(divisor));
         }
 
-        public static bool IsEven(this long value)
-        {
-            return value.IsMultipleOf(2);
-        }
+        public static bool IsEven(this long value) => value.IsMultipleOf(2);
 
-        public static bool IsOdd(this long value)
-        {
-            return !value.IsMultipleOf(2);
-        }
+        public static bool IsOdd(this long value) => !value.IsMultipleOf(2);
 
-        public static long Squared(this long value)
-        {
-            return value * value;
-        }
+        public static long Squared(this long value) => value * value;
 
         public static long Product(this IEnumerable<long> values)
         {
             return values.Aggregate((left, right) => left * right);
         }
 
-        public static bool IsPalindrome(this long value)
-        {
-            return value.ToString().IsPalindrome();
-        }
+        public static bool IsPalindrome(this long value) => value.ToString().IsPalindrome();
 
         public static IEnumerable<long> GetNDigitIntegers(byte N)
         {
@@ -62,7 +47,7 @@ namespace ProjectEuler.Math
                 yield return number;
         }
 
-        public static DivisionResult Divide(this long number, long divisor)
+        public static DivisionResult DivideBy(this long number, long divisor)
         {
             var remainder = number % divisor;
             var quotient = (number - remainder) / divisor;

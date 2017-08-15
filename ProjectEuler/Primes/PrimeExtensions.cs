@@ -1,10 +1,13 @@
-﻿using ProjectEuler.Math;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
     public static class PrimeExtensions
     {
+        private static readonly PrimeCollection _primes = new PrimeCollection();
+        private static readonly PrimeSieve _sieve = new PrimeSieve(2000000);
+
         public static long[] GetPrimeFactors(this long value, bool makeDistinct = false)
         {
             var factors = new List<long>(4);
@@ -31,23 +34,11 @@ namespace ProjectEuler.Primes
             return factors.ToArray();
         }
 
-        public static long[] GetUniquePrimeFactors(this long value)
-        {
-            return value.GetPrimeFactors(true);
-        }
+        public static long[] GetUniquePrimeFactors(this long value) => value.GetPrimeFactors(true);
 
         // Not thread safe
-        public static bool IsPrime(this long number)
-        {
-            return _primes.IsPrime(number);
-        }
+        public static bool IsPrime(this long number) => _primes.IsPrime(number);
 
-        public static bool IsComposite(this long number)
-        {
-            return !IsPrime(number);
-        }
-
-        private static readonly PrimeCollection _primes = new PrimeCollection();
-        private static readonly PrimeSieve _sieve = new PrimeSieve(2000000);
+        public static bool IsComposite(this long number) => !IsPrime(number);
     }
 }

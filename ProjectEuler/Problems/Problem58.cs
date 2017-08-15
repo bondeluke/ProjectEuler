@@ -11,11 +11,11 @@ namespace ProjectEuler.Problems
         {
             const double threshold = 0.1;
             var totalNumbers = 5; // 1, 3, 5, 7, 9
-            var totalPrimes = 3;  // 3, 5, 7
+            var totalPrimes = 3; // 3, 5, 7
 
             var layer = 1;
 
-            while (((double)totalPrimes/totalNumbers) >= threshold)
+            while ((double) totalPrimes / totalNumbers >= threshold)
             {
                 layer++;
 
@@ -32,9 +32,6 @@ namespace ProjectEuler.Problems
             return layer * 2 + 1;
         }
 
-        private static long GetNumberAlongDiagonal(int layer, byte diagonal)
-        {
-            return (layer * 2 + 1).ToLong().Squared() - 2 * diagonal * layer;
-        }
+        private static long GetNumberAlongDiagonal(int layer, byte diagonal) => (layer * 2 + 1).ToLong().Squared() - 2 * diagonal * layer;
     }
 }

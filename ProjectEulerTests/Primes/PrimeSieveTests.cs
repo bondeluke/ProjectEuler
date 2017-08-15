@@ -7,7 +7,7 @@ namespace ProjectEulerTests.Primes
     public class PrimeSieveTests
     {
         [TestMethod]
-        public void SieveTests()
+        public void SieveLength()
         {
             var sieve = new PrimeSieve(1000);
 

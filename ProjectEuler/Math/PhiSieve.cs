@@ -2,8 +2,6 @@
 {
     public class PhiSieve
     {
-        private readonly long[] _phi;
-
         public PhiSieve(long size)
         {
             size += 1;
@@ -28,9 +26,8 @@
             }
         }
 
-        public long Phi(long number)
-        {
-            return _phi[number];
-        }
+        private readonly long[] _phi;
+
+        public long Phi(long number) => _phi[number];
     }
 }

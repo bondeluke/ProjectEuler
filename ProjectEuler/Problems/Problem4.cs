@@ -1,7 +1,7 @@
-﻿using ProjectEuler.Core;
-using ProjectEuler.Math;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using ProjectEuler.Core;
+using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems
 {
@@ -10,18 +10,15 @@ namespace ProjectEuler.Problems
     {
         private const byte NumDigits = 3;
 
-        public object Solve()
-        {
-            return GetThreeDigitProducts().Where(Integer.IsPalindrome).Max();
-        }
+        public object Solve() => GetThreeDigitProducts().Where(Integer.IsPalindrome).Max();
 
         private IEnumerable<long> GetThreeDigitProducts()
         {
             var range = Integer.GetNumberOfLength(NumDigits);
 
             for (var left = range.Lower; left < range.Upper; left++)
-                for (var right = left; right < range.Upper; right++)
-                    yield return left * right;
+            for (var right = left; right < range.Upper; right++)
+                yield return left * right;
         }
     }
 }

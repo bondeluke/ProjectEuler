@@ -8,6 +8,17 @@ namespace ProjectEulerTests.Math
     public class AlgebraTests
     {
         [TestMethod]
+        public void Divides()
+        {
+            1L.Divides(1).ShouldBeTrue();
+            1L.Divides(99).ShouldBeTrue();
+            2L.Divides(4).ShouldBeTrue();
+
+            2L.Divides(5).ShouldBeFalse();
+            4L.Divides(2).ShouldBeFalse();
+        }
+
+        [TestMethod]
         public void Gcd()
         {
             Algebra.Gcd(1, 1).ShouldBe(1);
@@ -19,15 +30,14 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void IsCoPrime()
+        public void AreCoprime()
         {
-            6L.IsCoPrimeWith(1).ShouldBeTrue();
-            6L.IsCoPrimeWith(5).ShouldBeTrue();
-
-            6L.IsCoPrimeWith(2).ShouldBeFalse();
-            6L.IsCoPrimeWith(3).ShouldBeFalse();
-            6L.IsCoPrimeWith(4).ShouldBeFalse();
-            6L.IsCoPrimeWith(6).ShouldBeFalse();
+            Algebra.AreCoprime(6, 1).ShouldBeTrue();
+            Algebra.AreCoprime(6, 5).ShouldBeTrue();
+            Algebra.AreCoprime(6, 2).ShouldBeFalse();
+            Algebra.AreCoprime(6, 3).ShouldBeFalse();
+            Algebra.AreCoprime(6, 4).ShouldBeFalse();
+            Algebra.AreCoprime(6, 6).ShouldBeFalse();
         }
 
         [TestMethod]
@@ -82,6 +92,15 @@ namespace ProjectEulerTests.Math
             divisors[0].ShouldBe(1);
             divisors[1].ShouldBe(2);
             divisors[2].ShouldBe(4);
+        }
+
+        [TestMethod]
+        public void Phi()
+        {
+            1L.Phi().ShouldBe(1);
+            2L.Phi().ShouldBe(1);
+            6L.Phi().ShouldBe(2);
+            9L.Phi().ShouldBe(6);
         }
     }
 }

@@ -12,14 +12,11 @@ namespace ProjectEuler.Math
 
         public long Numerator { get; }
         public long Denominator { get; }
-        public bool IsReduced => Numerator.IsCoPrimeWith(Denominator);
+        public bool IsReduced => Algebra.AreCoprime(Numerator, Denominator);
 
         public static Fraction New(long numerator, long denominator) => new Fraction(numerator, denominator);
 
-        public override string ToString()
-        {
-            return $"{Numerator}/{Denominator}";
-        }
+        public override string ToString() => $"{Numerator}/{Denominator}";
 
         public static Fraction operator +(Fraction left, Fraction right)
         {
@@ -31,30 +28,15 @@ namespace ProjectEuler.Math
             return left.Scale(lcm / left.Denominator) + right.Scale(lcm / right.Denominator);
         }
 
-        public static Fraction operator -(Fraction left, Fraction right)
-        {
-            return left + -1 * right;
-        }
+        public static Fraction operator -(Fraction left, Fraction right) => left + -1 * right;
 
-        public static Fraction operator +(long left, Fraction right)
-        {
-            return New(left, 1) + right;
-        }
+        public static Fraction operator +(long left, Fraction right) => New(left, 1) + right;
 
-        public static Fraction operator -(long left, Fraction right)
-        {
-            return New(left, 1) - right;
-        }
+        public static Fraction operator -(long left, Fraction right) => New(left, 1) - right;
 
-        public static Fraction operator *(long scalar, Fraction right)
-        {
-            return New(right.Numerator * scalar, right.Denominator);
-        }
+        public static Fraction operator *(long scalar, Fraction right) => New(right.Numerator * scalar, right.Denominator);
 
-        public static Fraction operator *(Fraction left, Fraction right)
-        {
-            return New(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
-        }
+        public static Fraction operator *(Fraction left, Fraction right) => New(left.Numerator * right.Numerator, left.Denominator * right.Denominator);
 
         public bool Equals(Fraction other)
         {
@@ -69,7 +51,7 @@ namespace ProjectEuler.Math
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is Fraction && Equals((Fraction)obj);
+            return obj is Fraction && Equals((Fraction) obj);
         }
 
         public override int GetHashCode()

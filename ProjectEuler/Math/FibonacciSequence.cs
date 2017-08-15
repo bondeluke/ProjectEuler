@@ -11,20 +11,15 @@ namespace ProjectEuler.Math
             Reset();
         }
 
-        public BigInteger Current { get; private set; }
-
-        private BigInteger _prev;
         private bool _firstMove;
 
-        public IEnumerator<BigInteger> GetEnumerator()
-        {
-            return this;
-        }
+        private BigInteger _prev;
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        public IEnumerator<BigInteger> GetEnumerator() => this;
+
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        public BigInteger Current { get; private set; }
 
         public bool MoveNext()
         {

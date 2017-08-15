@@ -10,7 +10,7 @@ namespace ProjectEuler.Primes
         private readonly List<long> _primes;
 
         private long _greatestChecked;
-        private readonly long _largestCoPrime;
+        private readonly long _largestCoprime;
 
         private const long Root = 2 * 3;
 
@@ -23,8 +23,8 @@ namespace ProjectEuler.Primes
                 2, 3, 5/*, 7, 11, 13, 17, 19, 23, 29*/
             };
 
-            _largestCoPrime = Root - 1;
-            _greatestChecked = _largestCoPrime; // Number of the form 6k + 5
+            _largestCoprime = Root - 1;
+            _greatestChecked = _largestCoprime; // Number of the form 6k + 5
         }
 
         public bool IsPrime(long number)
@@ -58,16 +58,16 @@ namespace ProjectEuler.Primes
         {
             for (var kRoot = _greatestChecked + 1; kRoot <= upto; kRoot += Root)
             {
-                foreach (var coPrime in _rootLesserCoPrimes.Value)
+                foreach (var coPrime in _rootLesserCoprimes.Value)
                 {
                     AddIfPrime(kRoot + coPrime);
                 }
 
-                _greatestChecked = kRoot + _largestCoPrime;
+                _greatestChecked = kRoot + _largestCoprime;
             }
         }
 
-        private readonly Lazy<long[]> _rootLesserCoPrimes = new Lazy<long[]>(() => Root.GetTotatives());
+        private readonly Lazy<long[]> _rootLesserCoprimes = new Lazy<long[]>(() => Root.GetTotatives());
 
         private void AddIfPrime(long candidate)
         {

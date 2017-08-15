@@ -17,7 +17,7 @@ namespace ProjectEulerTests
 
             if (solution is long && expectedSolution is int)
             {
-                expectedSolution = ((int)expectedSolution).ToLong();
+                expectedSolution = ((int) expectedSolution).ToLong();
             }
 
             if (!expectedSolution.Equals(solution))

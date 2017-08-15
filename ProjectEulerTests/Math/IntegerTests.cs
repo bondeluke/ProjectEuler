@@ -42,5 +42,43 @@ namespace ProjectEulerTests.Math
             range[0].ShouldBe(1);
             range[1].ShouldBe(4);
         }
+
+        [TestMethod]
+        public void DivideBy()
+        {
+            var result = 4L.DivideBy(3);
+            result.Quotient.ShouldBe(1);
+            result.Remainder.ShouldBe(1);
+
+            result = 24L.DivideBy(4);
+            result.Quotient.ShouldBe(6);
+            result.Remainder.ShouldBe(0);
+
+            result = 24L.DivideBy(25);
+            result.Quotient.ShouldBe(0);
+            result.Remainder.ShouldBe(24);
+        }
+
+        [TestMethod]
+        public void Product()
+        {
+            new[] { 1L }.Product().ShouldBe(1);
+            new[] { 1L, 5 }.Product().ShouldBe(5);
+            new[] { 1L, 2, 5 }.Product().ShouldBe(10);
+            new[] { 1L, 2, 3, 3 }.Product().ShouldBe(18);
+            new[] { 3, 2, 3L }.Product().ShouldBe(18);
+        }
+
+        [TestMethod]
+        public void IsPalindrome()
+        {
+            0L.IsPalindrome().ShouldBeTrue();
+            1L.IsPalindrome().ShouldBeTrue();
+            22L.IsPalindrome().ShouldBeTrue();
+            909L.IsPalindrome().ShouldBeTrue();
+
+            123L.IsPalindrome().ShouldBeFalse();
+            1321L.IsPalindrome().ShouldBeFalse();
+        }
     }
 }

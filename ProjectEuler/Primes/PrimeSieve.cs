@@ -1,18 +1,10 @@
-﻿using ProjectEuler.Math;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
     public class PrimeSieve
     {
-        private bool[] _isPrime;
-
-        private readonly int _limit;
-
-        private readonly List<long> _primes;
-
-        public long[] Primes => _primes.ToArray();
-
         public PrimeSieve(int limit)
         {
             _limit = limit;
@@ -22,6 +14,13 @@ namespace ProjectEuler.Primes
             CrossOutComposites();
             AddPrimesToList();
         }
+
+        private readonly int _limit;
+
+        private readonly List<long> _primes;
+        private bool[] _isPrime;
+
+        public long[] Primes => _primes.ToArray();
 
         private void AddPrimesToList()
         {
@@ -54,13 +53,10 @@ namespace ProjectEuler.Primes
 
         private void CrossOutMultiplesOf(long prime)
         {
-            for (long mult = prime * 2; mult < _limit; mult += prime)
+            for (var mult = prime * 2; mult < _limit; mult += prime)
                 _isPrime[mult] = false;
         }
 
-        public bool IsPrime(int number)
-        {
-            return _isPrime[number];
-        }
+        public bool IsPrime(int number) => _isPrime[number];
     }
 }

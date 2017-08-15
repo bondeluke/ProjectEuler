@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ProjectEuler.Core;
+﻿using ProjectEuler.Core;
 using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
@@ -11,6 +8,13 @@ namespace ProjectEuler.Problems
     // such that for every divisor d of n, d+n/d is prime.
     public class Problem357 : IProjectEulerProblem
     {
+        private readonly ILogWritable _log;
+
+        public Problem357(ILogWritable log)
+        {
+            _log = log;
+        }
+
         public object Solve()
         {
             long sum = 0;
@@ -18,53 +22,55 @@ namespace ProjectEuler.Problems
             Research();
 
             // Nope... just... totally wrong.
-            const int limit = 50000000;
-            var sqrt = limit.Sqrt().Ceiling().ToInt();
+            //const int limit = 50000000;
+            //var sqrt = limit.Sqrt().Ceiling().ToInt();
 
-            var primes = new PrimeSieve(limit).Primes.Skip(1).ToArray();
+            //var primes = new PrimeSieve(limit).Primes.Skip(1).ToArray();
 
-            var couldHaveProperty = new bool[limit];
+            //var couldHaveProperty = new bool[limit];
 
-            for (long index = 0; index < couldHaveProperty.Length; index++)
-            {
-                couldHaveProperty[index] = index.IsOdd();
-            }
+            //for (long index = 0; index < couldHaveProperty.Length; index++)
+            //{
+            //    couldHaveProperty[index] = index.IsOdd();
+            //}
 
-            foreach (var prime in primes.TakeWhile(p => p < sqrt))
-            {
-                var primeSquared = prime.Squared(); // Always odd
-                for (var multiple = primeSquared; multiple < limit; multiple += primeSquared * 2)
-                {
-                    couldHaveProperty[multiple] = false;
-                }
-            }
+            //foreach (var prime in primes.TakeWhile(p => p < sqrt))
+            //{
+            //    var primeSquared = prime.Squared(); // Always odd
+            //    for (var multiple = primeSquared; multiple < limit; multiple += primeSquared * 2)
+            //    {
+            //        couldHaveProperty[multiple] = false;
+            //    }
+            //}
 
-            for (long index = 1; index < couldHaveProperty.Length; index += 2)
-            {
-                if (!couldHaveProperty[index]) continue;
+            //for (long index = 1; index < couldHaveProperty.Length; index += 2)
+            //{
+            //    if (!couldHaveProperty[index]) continue;
 
-                couldHaveProperty[index] = (index * 2 + 1).IsPrime();
-            }
+            //    couldHaveProperty[index] = (index * 2 + 1).IsPrime();
+            //}
 
-            var candidates = new List<long>();
+            //var candidates = new List<long>();
 
-            for (var index = 1; index < couldHaveProperty.Length; index++)
-            {
-                if (!couldHaveProperty[index]) continue;
+            //for (var index = 1; index < couldHaveProperty.Length; index++)
+            //{
+            //    if (!couldHaveProperty[index]) continue;
 
-                candidates.Add(index * 2);
-            }
+            //    candidates.Add(index * 2);
+            //}
 
-            return candidates.Where(HasProperty).Sum();
+            return 0;
+
+            //return candidates.Where(HasProperty).Sum();
         }
 
-        private static void Research()
+        private void Research()
         {
-            for (long number = 1; number < 250; number++)
+            for (long number = 1; number < 1000; number++)
             {
                 if (HasProperty(number))
                 {
-                    Console.WriteLine($"{number}: {number.GetPrimeFactors().StringJoin()}");
+                    _log.WriteLine($"{number}: {number.GetPrimeFactors().StringJoin()}");
                 }
             }
         }
