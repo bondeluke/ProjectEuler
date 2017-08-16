@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using ProjectEuler.Core;
+using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems.Problem99

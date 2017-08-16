@@ -5,8 +5,7 @@ namespace ProjectEuler.Primes
 {
     public static class PrimeExtensions
     {
-        private static readonly ExpandablePrimes _primes = new ExpandablePrimes();
-        private static readonly PrimeSieve _sieve = new PrimeSieve(10000001); // That's a lot of primes
+        private static readonly PrimeSieve _sieve = new PrimeSieve(10000001); // TODO: Delete me.. probably
 
         public static long[] GetPrimeFactors(this long value, bool makeDistinct = false)
         {
@@ -40,5 +39,10 @@ namespace ProjectEuler.Primes
         public static bool IsPrime(this long number) => _sieve.IsPrime(number);
 
         public static bool IsComposite(this long number) => !IsPrime(number);
+
+        public static void StartUp()
+        {
+            _sieve.IsPrime(1);
+        }
     }
 }

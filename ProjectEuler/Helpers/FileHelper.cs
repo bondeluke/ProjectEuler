@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace ProjectEuler
+namespace ProjectEuler.Helpers
 {
     public static class FileHelper
     {

@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ProjectEuler.Core;
+using ProjectEuler.Helpers;
 using ProjectEuler.Problems;
 
 namespace ProjectEuler
@@ -8,13 +9,13 @@ namespace ProjectEuler
     {
         private static void Main(string[] args)
         {
-            var log = new Logger();
+            var log = new Log();
 
-            var problem = new Problem27().WithDiagnostics();
+            var problem = new Problem72().WithDiagnostics();
 
             var solution = problem.Solve();
 
-            var output = new OutputWriter(log).GetOutput(solution, problem.Milliseconds);
+            var output = new OutputWriter(log).GetOutput(problem.Name, solution, problem.Milliseconds);
 
             File.WriteAllText(FileHelper.GetFullPath("output.txt"), output);
         }

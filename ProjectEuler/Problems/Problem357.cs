@@ -1,4 +1,5 @@
 ﻿using ProjectEuler.Core;
+using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
@@ -8,9 +9,9 @@ namespace ProjectEuler.Problems
     // such that for every divisor d of n, d+n/d is prime.
     public class Problem357 : IProjectEulerProblem
     {
-        private readonly ILogWritable _log;
+        private readonly IWriteOnlyLog _log;
 
-        public Problem357(ILogWritable log)
+        public Problem357(IWriteOnlyLog log)
         {
             _log = log;
         }

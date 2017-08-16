@@ -1,4 +1,5 @@
 ﻿using ProjectEuler.Core;
+using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 
 namespace ProjectEuler.Problems
@@ -6,12 +7,12 @@ namespace ProjectEuler.Problems
     // Problem 65: Find the sum of digits in the numerator of the 100th convergent of the continued fraction for e.
     public class Problem65 : IProjectEulerProblem
     {
-        public Problem65(ILogWritable log)
+        public Problem65(IWriteOnlyLog log)
         {
             _log = log;
         }
 
-        private readonly ILogWritable _log;
+        private readonly IWriteOnlyLog _log;
 
         public object Solve()
         {

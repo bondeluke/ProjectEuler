@@ -1,35 +1,35 @@
 ﻿using System;
 
-namespace ProjectEuler
+namespace ProjectEuler.Helpers
 {
-    public class Logger: ILogWritable, ILogReadable
+    public class Log : IWriteOnlyLog, IReadOnlyLog
     {
-        private string _log;
         private bool _hasContent;
+        private string _log;
 
-        public Logger()
+        public Log()
         {
             _log = string.Empty;
             _hasContent = false;
         }
+
+        public bool HasContent() => _hasContent;
+
+        public string GetLog() => _log;
 
         public void WriteLine(object line)
         {
             _log += line + Environment.NewLine;
             _hasContent = true;
         }
-
-        public bool HasContent() => _hasContent;
-
-        public string GetLog() => _log;
     }
 
-    public interface ILogWritable
+    public interface IWriteOnlyLog
     {
         void WriteLine(object line);
     }
 
-    public interface ILogReadable
+    public interface IReadOnlyLog
     {
         bool HasContent();
         string GetLog();
