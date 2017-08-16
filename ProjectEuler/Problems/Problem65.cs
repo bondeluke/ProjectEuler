@@ -16,7 +16,7 @@ namespace ProjectEuler.Problems
         {
             const int term = 100;
 
-            //LogFirstConvergents(term);
+            Research(term);
 
             return GetConvergent(term).Numerator.SumDigits();
         }
@@ -47,11 +47,11 @@ namespace ProjectEuler.Problems
                 : 1;
         }
 
-        private void LogFirstConvergents(int limit)
+        private void Research(int limit)
         {
             for (var i = 1; i < limit; i++)
             {
-                // Long overflow at term 39
+                // long overflow at term 39
                 _log.WriteLine(GetConvergent(i).Numerator);
             }
         }

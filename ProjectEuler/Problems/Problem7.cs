@@ -8,7 +8,7 @@ namespace ProjectEuler.Problems
     {
         public object Solve()
         {
-            var primes = new PrimeCollection();
+            var primes = new ExpandablePrimes();
 
             return primes.GetNthPrime(10001);
         }

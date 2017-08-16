@@ -57,8 +57,12 @@ namespace ProjectEuler.Math
             return new DivisionResult(quotient, remainder);
         }
 
-        public static int SumDigits(this long number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
+        public static long SumDigits(this long number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
 
-        public static int SumDigits(this BigInteger number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
+        public static long SumDigits(this BigInteger number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
+
+        public static bool IsHarshad(this long number) => number.SumDigits().Divides(number);
+
+        public static long TruncateRight(this long number) => number.ToString().StripRight().ToLong();
     }
 }

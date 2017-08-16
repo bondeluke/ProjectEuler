@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
 namespace ProjectEulerTests.Primes
@@ -15,6 +16,11 @@ namespace ProjectEulerTests.Primes
 
             4L.IsPrime().ShouldBeFalse();
             24L.IsPrime().ShouldBeFalse();
+
+            10L.Power(8).IsPrime().ShouldBeFalse();
+
+            1123L.IsPrime().ShouldBeTrue();
+            4008200000033L.IsPrime().ShouldBeTrue();
         }
 
         [TestMethod]

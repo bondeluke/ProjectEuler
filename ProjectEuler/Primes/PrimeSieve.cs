@@ -3,12 +3,11 @@ using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
-    public class PrimeSieve
+    public class PrimeSieve : IPrimeDecider
     {
         public PrimeSieve(int limit)
         {
             _limit = limit;
-            _primes = new List<long>();
 
             InitializeArray();
             CrossOutComposites();
@@ -17,20 +16,23 @@ namespace ProjectEuler.Primes
 
         private readonly int _limit;
 
-        private readonly List<long> _primes;
         private bool[] _isPrime;
 
-        public long[] Primes => _primes.ToArray();
+        public long[] Primes { get; private set; }
 
         private void AddPrimesToList()
         {
+            var primes = new List<long>();
+
             for (var i = 0; i < _limit; i++)
             {
                 if (_isPrime[i])
                 {
-                    _primes.Add(i);
+                    primes.Add(i);
                 }
             }
+
+            Primes = primes.ToArray();
         }
 
         private void InitializeArray()
@@ -57,6 +59,14 @@ namespace ProjectEuler.Primes
                 _isPrime[mult] = false;
         }
 
-        public bool IsPrime(int number) => _isPrime[number];
+        public bool IsPrime(long number)
+        {
+            if (number < _limit)
+            {
+                return _isPrime[number];
+            }
+
+            return new PrimalityAlgorithm(Primes, _limit).IsPrime(number);
+        }
     }
 }

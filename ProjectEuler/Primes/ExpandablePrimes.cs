@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
-    public class PrimeCollection
+    public class ExpandablePrimes : IPrimeDecider
     {
         private readonly List<long> _primes;
 
@@ -16,7 +15,7 @@ namespace ProjectEuler.Primes
 
         public int Count => _primes.Count;
 
-        public PrimeCollection()
+        public ExpandablePrimes()
         {
             _primes = new List<long>
             {
@@ -29,29 +28,16 @@ namespace ProjectEuler.Primes
 
         public bool IsPrime(long number)
         {
-            if (_greatestChecked > number)
-                return _primes.Any(p => p == number);
-
             var sqrt = number.Sqrt().Ceiling().ToLong();
 
-            var i = 0;
-            long prime = 2;
-            while (true)
+            if (sqrt > _greatestChecked)
             {
-                if (number % prime == 0)
-                    return false; // number is not a prime.
-
-                if (_primes.Count == i + 1)
-                {
-                    PopulatePrimesUpTo(sqrt);
-                }
-
-                if (prime >= sqrt || _primes.Count == i + 1) // If we just populated, but none were added, this number must be prime.
-                    return true;
-
-                i += 1;
-                prime = _primes[i];
+                PopulatePrimesUpTo(sqrt);
+                // This could be more reactive instead of pro-active, but chances are that if we're 
+                // checking numbers at this magnitude, we'll probably need to grow soon anyway.
             }
+
+            return new PrimalityAlgorithm(_primes, _greatestChecked).IsPrime(number);
         }
 
         private void PopulatePrimesUpTo(long upto)

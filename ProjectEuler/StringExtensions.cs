@@ -19,6 +19,9 @@ namespace ProjectEuler
 
         private static string StripEnds(this string value, int distance) => value.Substring(distance, value.Length - 1 - distance);
 
+        public static string StripRight(this string value, int distance = 1) => value.Substring(0, value.Length - distance);
+
         public static string StringJoin(this IEnumerable<long> values, string seperator = ", ") => string.Join(seperator, values);
+        public static string Plus(this string value, object addition) => value + addition;
     }
 }

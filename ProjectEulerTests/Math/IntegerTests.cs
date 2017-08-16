@@ -88,5 +88,19 @@ namespace ProjectEulerTests.Math
             12L.SumDigits().ShouldBe(3);
             555L.SumDigits().ShouldBe(15);
         }
+
+        [TestMethod]
+        public void Harshad()
+        {
+            201L.IsHarshad().ShouldBeTrue();
+            202L.IsHarshad().ShouldBeFalse();
+        }
+
+        [TestMethod]
+        public void TruncateRight()
+        {
+            201L.TruncateRight().ShouldBe(20);
+            201L.TruncateRight().TruncateRight().ShouldBe(2);
+        }
     }
 }

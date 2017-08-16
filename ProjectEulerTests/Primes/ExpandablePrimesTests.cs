@@ -5,12 +5,12 @@ using ProjectEuler.Primes;
 namespace ProjectEulerTests.Primes
 {
     [TestClass]
-    public class PrimeCollectionTests
+    public class ExpandablePrimesTests
     {
         [TestMethod]
         public void IsPrime()
         {
-            var collection = new PrimeCollection();
+            var collection = new ExpandablePrimes();
 
             collection.IsPrime(2).ShouldBeTrue();
             collection.IsPrime(3).ShouldBeTrue();
@@ -23,13 +23,13 @@ namespace ProjectEulerTests.Primes
             collection.IsPrime(121).ShouldBeFalse();
             collection.IsPrime(10.Power(8)).ShouldBeFalse();
 
-            collection.Count.ShouldBeBetween(24, 26);
+            collection.IsPrime(4008200000033).ShouldBeTrue();
         }
 
         [TestMethod]
         public void GetNthPrime()
         {
-            var collection = new PrimeCollection();
+            var collection = new ExpandablePrimes();
 
             collection.GetNthPrime(1).ShouldBe(2);
             collection.GetNthPrime(10).ShouldBe(29);
