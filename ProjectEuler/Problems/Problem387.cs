@@ -6,6 +6,7 @@ using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
 {
+    // Problem 387: Harshad numbers. It's complicated.
     public class Problem387 : IProjectEulerProblem
     {
         public object Solve()

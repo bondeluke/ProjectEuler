@@ -5,6 +5,8 @@ using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
 {
+    // Problem 47: Find the first four consecutive integers to have four 
+    // distinct prime factors each. What is the first of these numbers?
     public class Problem47 : IProjectEulerProblem
     {
         public object Solve()

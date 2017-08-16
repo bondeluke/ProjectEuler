@@ -15,6 +15,7 @@ namespace ProjectEuler.Problems
             _log = log;
         }
 
+        // TODO 
         public object Solve()
         {
             long sum = 0;

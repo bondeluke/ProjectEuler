@@ -1,2 +1,2 @@
-Solution: 134043
-Time elapsed: 15 millisecond(s)
+Solution: -59231
+Time elapsed: 12462 millisecond(s)

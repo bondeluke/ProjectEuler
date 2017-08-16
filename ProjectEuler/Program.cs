@@ -10,7 +10,7 @@ namespace ProjectEuler
         {
             var log = new Logger();
 
-            var problem = new Problem47().WithDiagnostics();
+            var problem = new Problem27().WithDiagnostics();
 
             var solution = problem.Solve();
 
