@@ -5,7 +5,7 @@ namespace ProjectEuler.Primes
 {
     public class PrimeSieve : IPrimeDecider
     {
-        public PrimeSieve(int limit)
+        public PrimeSieve(long limit)
         {
             _limit = limit;
 
@@ -14,7 +14,7 @@ namespace ProjectEuler.Primes
             AddPrimesToList();
         }
 
-        private readonly int _limit;
+        private readonly long _limit;
 
         private bool[] _isPrime;
 

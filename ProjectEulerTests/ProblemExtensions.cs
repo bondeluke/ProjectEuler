@@ -7,34 +7,37 @@ namespace ProjectEulerTests
 {
     public static class ProblemExtensions
     {
-        public static ProblemWithDiagnostics SolutionShouleBe(this IProjectEulerProblem problem, object expectedSolution)
+        public static TimedResult SolutionShouleBe(this IProjectEulerProblem problem, object expectedSolution)
         {
-            var name = problem.GetType().Name;
+            var result = problem.SolveWithTimedResult();
 
-            var withDiagnostics = problem.WithDiagnostics();
-
-            var solution = withDiagnostics.Solve();
-
-            if (solution is long && expectedSolution is int)
+            if (result.Solution is long && expectedSolution is int)
             {
-                expectedSolution = ((int) expectedSolution).ToLong();
+                expectedSolution = ((int)expectedSolution).ToLong();
             }
 
-            if (!expectedSolution.Equals(solution))
+            if (!expectedSolution.Equals(result.Solution))
             {
-                throw new Exception($"{name} expected a solution of {expectedSolution}, but returned {solution}.");
+                throw new Exception($"{result.Name} expected a solution of {expectedSolution}, but returned {result.Solution}.");
             }
-            Assert.AreEqual(expectedSolution, solution);
+            Assert.AreEqual(expectedSolution, result.Solution);
 
-            return withDiagnostics;
+            return result;
         }
 
-        public static void AndSolveTimeShouldBeUnder(this ProblemWithDiagnostics problem, long milliseconds)
+        public static void SolveTimeShouldBeLessThan(this TimedResult problem, long milliseconds)
         {
             if (problem.Milliseconds >= milliseconds)
             {
                 throw new Exception($"{problem.Name} took too long to solve.");
             }
+        }
+
+        public static void VerifySolutionAndPerformance(this IProblemAndMetadata problem)
+        {
+            problem
+                .SolutionShouleBe(problem.ExpectedSolution)
+                .SolveTimeShouldBeLessThan((problem.Benchmark * 0.5).ToLong());
         }
     }
 }

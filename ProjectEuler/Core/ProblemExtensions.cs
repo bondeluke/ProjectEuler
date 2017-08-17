@@ -2,9 +2,6 @@
 {
     public static class ProblemExtensions
     {
-        public static ProblemWithDiagnostics WithDiagnostics(this IProjectEulerProblem problem)
-        {
-            return new ProblemWithDiagnostics(problem);
-        }
+        public static string GetName(this IProjectEulerProblem problem) => problem.GetType().Name;
     }
 }

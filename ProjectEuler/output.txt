@@ -1,3 +1,3 @@
-Problem72
-Solution: 303963552391
-Time elapsed: 840 millisecond(s)
+Problem1
+Solution: 233168
+Time elapsed: 19 millisecond(s)

@@ -61,8 +61,12 @@ namespace ProjectEuler.Math
 
         public static long SumDigits(this BigInteger number) => number.ToString().Select(c => Parse(c.ToString())).Sum();
 
+        public static long NumDigits(this BigInteger number) => number.ToString().Length;
+
         public static bool IsHarshad(this long number) => number.SumDigits().Divides(number);
 
         public static long TruncateRight(this long number) => number.ToString().StripRight().ToLong();
+
+        public static BigInteger ToBigInteger(this int  number) => new BigInteger(number);
     }
 }

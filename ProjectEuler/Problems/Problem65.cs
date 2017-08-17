@@ -18,7 +18,7 @@ namespace ProjectEuler.Problems
         {
             const int term = 100;
 
-            Research(term);
+            //Research(term);
 
             return GetConvergent(term).Numerator.SumDigits();
         }

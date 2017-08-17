@@ -25,6 +25,8 @@ namespace ProjectEuler.Math
 
         public static double Ceiling(this double value) => System.Math.Ceiling(value);
 
+        public static double Floor(this double value) => System.Math.Floor(value);
+
         public static long Power(this int value, int power) => System.Math.Pow(value, power).ToLong();
 
         public static long Power(this long value, int power) => System.Math.Pow(value, power).ToLong();

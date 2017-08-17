@@ -1,26 +1,24 @@
-﻿using System;
+﻿using System.Text;
 
 namespace ProjectEuler.Helpers
 {
     public class Log : IWriteOnlyLog, IReadOnlyLog
     {
-        private bool _hasContent;
-        private string _log;
+        private readonly StringBuilder _log;
 
         public Log()
         {
-            _log = string.Empty;
-            _hasContent = false;
+            _log = new StringBuilder();
         }
 
-        public bool HasContent() => _hasContent;
-
-        public string GetLog() => _log;
+        public string ReadAll() => _log.ToString();
 
         public void WriteLine(object line)
         {
-            _log += line + Environment.NewLine;
-            _hasContent = true;
+            if (line != null)
+            {
+                _log.AppendLine(line.ToString());
+            }
         }
     }
 
@@ -31,7 +29,6 @@ namespace ProjectEuler.Helpers
 
     public interface IReadOnlyLog
     {
-        bool HasContent();
-        string GetLog();
+        string ReadAll();
     }
 }
