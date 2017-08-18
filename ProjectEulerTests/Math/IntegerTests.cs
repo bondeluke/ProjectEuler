@@ -102,5 +102,13 @@ namespace ProjectEulerTests.Math
             201L.TruncateRight().ShouldBe(20);
             201L.TruncateRight().TruncateRight().ShouldBe(2);
         }
+
+        [TestMethod]
+        public void Concat()
+        {
+            2L.Concat(1).ShouldBe(21);
+            1L.Concat(2).ShouldBe(12);
+            12345L.Concat(6789).ShouldBe(123456789);
+        }
     }
 }

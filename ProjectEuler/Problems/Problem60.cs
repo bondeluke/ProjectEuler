@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ProjectEuler.Core;
 using ProjectEuler.Math;
@@ -10,31 +9,73 @@ namespace ProjectEuler.Problems
     // Problem 60: Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime.
     public class Problem60 : IProjectEulerProblem
     {
-        public object ExpectedSolution { get; }
-        public long Benchmark { get; }
+        public object ExpectedSolution => 26033;
+        public long Benchmark => 25038;
 
-        private PrimeSieve _sieve;
+        public Problem60()
+        {
+            PrimeExtensions.PreLoadSieve();
+        }
 
         // On my first go, I got 423841 as my sum. That was wrong, but gives me an upper limit to work with.
         public object Solve()
         {
+            var primes = new PrimeSieve(10.Power(4)).Primes;
 
-            const int power = 6;
-            var limit = 423841;
-            _sieve = new PrimeSieve(10.Power(7));
+            var groups = new List<FriendlyPrimes>();
 
-            var subset = _sieve.Primes
-                .Where(p => p < limit)
-                .Where(p => WorkTogether(p, 3) && WorkTogether(p, 7)).ToArray();
+            for (var i = 0; i < primes.Length; i++)
+            {
+                for (var j = i + 1; j < primes.Length; j++)
+                {
+                    if (!WorkTogether(primes[i], primes[j])) continue;
+                    for (var k = j + 1; k < primes.Length; k++)
+                    {
+                        if (!WorkTogether(primes[i], primes[k]) || !WorkTogether(primes[j], primes[k])) continue;
+                        for (var m = k + 1; m < primes.Length; m++)
+                        {
+                            if (WorkTogether(primes[i], primes[m]) && WorkTogether(primes[j], primes[m]) && WorkTogether(primes[k], primes[m]))
+                            {
+                                groups.Add(new FriendlyPrimes(new[]
+                                {
+                                    primes[i], primes[j], primes[k], primes[m]
+                                }));
+                            }
+                        }
+                    }
+                }
+            }
 
+            foreach (var prime in primes)
+            {
+                foreach (var group in groups)
+                {
+                    if (group.IsFriendlyWith(prime))
+                    {
+                        return group.Sum + prime;
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        public static bool WorkTogether(long number, long anotherNumber)
+        {
+            return number.Concat(anotherNumber).IsPrime() &&
+                   anotherNumber.Concat(number).IsPrime();
+        }
+
+        private Dictionary<long, List<long>> PopulateDict(long[] primes)
+        {
             var d = new Dictionary<long, List<long>>();
 
-            for (int i = 0; i < subset.Length; i++)
+            for (var i = 0; i < primes.Length; i++)
             {
-                for (int j = i + 1; j < subset.Length; j++)
+                for (var j = i + 1; j < primes.Length; j++)
                 {
-                    var p1 = subset[i];
-                    var p2 = subset[j];
+                    var p1 = primes[i];
+                    var p2 = primes[j];
                     if (WorkTogether(p1, p2))
                     {
                         if (d.ContainsKey(p1))
@@ -45,45 +86,46 @@ namespace ProjectEuler.Problems
                         {
                             d[p1] = new List<long> { p2 };
                         }
-                    }
-                }
-            }
-
-            d = d.Where(p => p.Value.Count > 1).ToDictionary(p => p.Key, p => p.Value);
-
-            long smallest = long.MaxValue;
-            long a, b, c;
-            foreach (var prime in d.Keys)
-            {
-                for (int i = 0; i < d[prime].Count; i++)
-                {
-                    for (int j = i + 1; j < d[prime].Count; j++)
-                    {
-                        var p1 = d[prime][i];
-                        var p2 = d[prime][j];
-                        if (WorkTogether(p1, p2))
+                        if (d.ContainsKey(p2))
                         {
-                            var sum = 3 + 7 + prime + p1 + p2;
-
-                            if (sum < smallest)
-                            {
-                                smallest = sum;
-                                a = prime;
-                                b = p1;
-                                c = p2;
-                            }
+                            d[p2].Add(p1);
+                        }
+                        else
+                        {
+                            d[p2] = new List<long> { p1 };
                         }
                     }
                 }
             }
-
-            return smallest;
+            return d;
         }
+    }
 
-        private bool WorkTogether(long number, long anotherNumber)
+    public class FriendlyPrimes
+    {
+        private readonly long[] _primes;
+
+        public FriendlyPrimes(long[] primes)
         {
-            return _sieve.IsPrime(number.Concat(anotherNumber)) &&
-                   _sieve.IsPrime(anotherNumber.Concat(number));
+            _primes = primes;
         }
+
+        public override string ToString()
+        {
+            return _primes.OrderBy(p => p).StringJoin();
+        }
+
+        public long Id => _primes.Product();
+
+        public bool IsFriendlyWith(long candidate)
+        {
+            return _primes.All(p => p == candidate || Problem60.WorkTogether(p, candidate));
+        }
+
+        public bool IsFriendlyWith(FriendlyPrimes group) => _primes.All(IsFriendlyWith);
+
+        public FriendlyPrimes Merge(FriendlyPrimes group) => new FriendlyPrimes(_primes.Concat(group._primes).ToArray());
+
+        public long Sum => _primes.Sum();
     }
 }

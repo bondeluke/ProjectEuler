@@ -40,7 +40,7 @@ namespace ProjectEuler.Primes
 
         public static bool IsComposite(this long number) => !IsPrime(number);
 
-        public static void StartUp()
+        public static void PreLoadSieve()
         {
             _sieve.IsPrime(1);
         }

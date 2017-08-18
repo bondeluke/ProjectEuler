@@ -15,7 +15,7 @@ namespace ProjectEulerTests
         {
             var log = new Log();
 
-            PrimeExtensions.StartUp(); // Give that sieve some time to load
+            PrimeExtensions.PreLoadSieve(); // Give that sieve some time to load
 
             // Ideally, would find with reflection.
             var problemsToVerify = new IProjectEulerProblem[]
