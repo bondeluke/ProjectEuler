@@ -14,6 +14,9 @@ namespace ProjectEuler.Problems
 
         private readonly IWriteOnlyLog _log;
 
+        public object ExpectedSolution { get; }
+        public long Benchmark { get; }
+
         public object Solve()
         {
             const int term = 100;

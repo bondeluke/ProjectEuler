@@ -9,6 +9,9 @@ namespace ProjectEuler.Problems
     // distinct prime factors each. What is the first of these numbers?
     public class Problem47 : IProjectEulerProblem
     {
+        public object ExpectedSolution { get; }
+        public long Benchmark { get; }
+
         public object Solve()
         {
             const int arbitraryLimit = 200000;

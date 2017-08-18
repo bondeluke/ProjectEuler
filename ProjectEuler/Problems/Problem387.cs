@@ -9,6 +9,9 @@ namespace ProjectEuler.Problems
     // Problem 387: Harshad numbers. It's complicated.
     public class Problem387 : IProjectEulerProblem
     {
+        public long Benchmark { get; }
+        public object ExpectedSolution { get; }
+
         public object Solve()
         {
             const int power = 14;

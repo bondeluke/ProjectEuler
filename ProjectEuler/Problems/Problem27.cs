@@ -54,5 +54,8 @@ namespace ProjectEuler.Problems
             }
             return count;
         }
+
+        public long Benchmark { get; }
+        public object ExpectedSolution { get; }
     }
 }

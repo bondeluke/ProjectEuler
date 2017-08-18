@@ -10,6 +10,8 @@ namespace ProjectEuler.Problems
     {
         private const byte NumDigits = 3;
 
+        public object ExpectedSolution { get; }
+        public long Benchmark { get; }
         public object Solve() => GetThreeDigitProducts().Where(Integer.IsPalindrome).Max();
 
         private IEnumerable<long> GetThreeDigitProducts()

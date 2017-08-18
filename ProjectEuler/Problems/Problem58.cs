@@ -7,6 +7,9 @@ namespace ProjectEuler.Problems
     // Spiral primes
     public class Problem58 : IProjectEulerProblem
     {
+        public object ExpectedSolution { get; }
+        public long Benchmark { get; }
+
         public object Solve()
         {
             const double threshold = 0.1;

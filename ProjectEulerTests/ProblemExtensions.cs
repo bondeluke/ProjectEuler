@@ -33,7 +33,7 @@ namespace ProjectEulerTests
             }
         }
 
-        public static void VerifySolutionAndPerformance(this IProblemAndMetadata problem)
+        public static void VerifySolutionAndPerformance(this IProjectEulerProblem problem)
         {
             problem
                 .SolutionShouleBe(problem.ExpectedSolution)

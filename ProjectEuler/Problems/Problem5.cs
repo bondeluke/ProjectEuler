@@ -6,7 +6,7 @@ using ProjectEuler.Primes;
 namespace ProjectEuler.Problems
 {
     // What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
-    public class Problem5 : IProblemAndMetadata
+    public class Problem5 : IProjectEulerProblem
     {
         public object Solve()
         {

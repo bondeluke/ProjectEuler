@@ -6,7 +6,7 @@ namespace ProjectEuler.Core
 {
     public class ProblemCollection
     {
-        public static IEnumerable<IProblemAndMetadata> GetProblems()
+        public static IEnumerable<IProjectEulerProblem> GetProblems()
         {
             var ass = Assembly.GetEntryAssembly();
 
@@ -14,7 +14,7 @@ namespace ProjectEuler.Core
             {
                 if (ti.ImplementedInterfaces.Contains(typeof(IProjectEulerProblem)))
                 {
-                    yield return ass.CreateInstance(ti.FullName) as IProblemAndMetadata;
+                    yield return ass.CreateInstance(ti.FullName) as IProjectEulerProblem;
                 }
             }
         }

@@ -18,7 +18,7 @@ namespace ProjectEulerTests
             PrimeExtensions.StartUp(); // Give that sieve some time to load
 
             // Ideally, would find with reflection.
-            var problemsToVerify = new IProblemAndMetadata[]
+            var problemsToVerify = new IProjectEulerProblem[]
             {
                 new Problem1(),
                 new Problem5()

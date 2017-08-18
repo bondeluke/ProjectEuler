@@ -66,6 +66,9 @@ namespace ProjectEuler.Problems
             //return candidates.Where(HasProperty).Sum();
         }
 
+        public long Benchmark { get; }
+        public object ExpectedSolution { get; }
+
         private void Research()
         {
             for (long number = 1; number < 1000; number++)

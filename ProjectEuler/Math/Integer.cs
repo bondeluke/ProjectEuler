@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices.ComTypes;
 using static System.Int32;
 
 namespace ProjectEuler.Math
@@ -66,6 +67,8 @@ namespace ProjectEuler.Math
         public static bool IsHarshad(this long number) => number.SumDigits().Divides(number);
 
         public static long TruncateRight(this long number) => number.ToString().StripRight().ToLong();
+
+        public static long Concat(this long number, long anotherNumber) => number.ToString().Plus(anotherNumber).ToLong();
 
         public static BigInteger ToBigInteger(this int  number) => new BigInteger(number);
     }

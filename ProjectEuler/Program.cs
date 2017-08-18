@@ -12,7 +12,7 @@ namespace ProjectEuler
 
             var log = new Log();
 
-            var result = new Problem1().SolveWithTimedResult();
+            var result = new Problem60().SolveWithTimedResult();
 
             log.WriteLine(result);
 

@@ -9,6 +9,9 @@ namespace ProjectEuler.Problems
     {
         private const long LargeNumber = 600851475143;
 
+        public object ExpectedSolution { get; }
+        public long Benchmark { get; }
+
         public object Solve()
         {
             return LargeNumber.GetPrimeFactors().Max();

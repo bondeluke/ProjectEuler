@@ -20,6 +20,8 @@ namespace ProjectEuler.Primes
 
         public long[] Primes { get; private set; }
 
+        public int PrimeCount => Primes.Length;
+
         private void AddPrimesToList()
         {
             var primes = new List<long>();
