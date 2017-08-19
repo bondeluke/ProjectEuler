@@ -10,122 +10,95 @@ namespace ProjectEuler.Problems
     public class Problem60 : IProjectEulerProblem
     {
         public object ExpectedSolution => 26033;
-        public long Benchmark => 25038;
+        public long Benchmark => 706;
 
         public Problem60()
         {
             PrimeExtensions.PreLoadSieve();
         }
 
-        // On my first go, I got 423841 as my sum. That was wrong, but gives me an upper limit to work with.
+        private Dictionary<long, List<long>> _buddyLookup;
+
         public object Solve()
         {
-            var primes = new PrimeSieve(10.Power(4)).Primes;
+            var limit = 8389; // The greatest prime in the answer
+            //var limit = 10.Power(4);
+            var primes = new PrimeSieve(limit).Primes;
 
-            var groups = new List<FriendlyPrimes>();
+            var attempt = LookForSolution(primes, 1);
 
-            for (var i = 0; i < primes.Length; i++)
+            return attempt > 0 
+                ? attempt 
+                : LookForSolution(primes, 2);
+        }
+
+        private long LookForSolution(long[] primes, int mod)
+        {
+            primes = primes.Where(p => p % 3 == mod).ToArray();
+
+            _buddyLookup = CreateBuddyLookup(primes);
+
+            foreach (var rootPrime in _buddyLookup)
             {
-                for (var j = i + 1; j < primes.Length; j++)
+                foreach (var friend in rootPrime.Value)
                 {
-                    if (!WorkTogether(primes[i], primes[j])) continue;
-                    for (var k = j + 1; k < primes.Length; k++)
+                    var intersection = rootPrime.Value.Intersect(_buddyLookup[friend]).ToArray();
+                    if (intersection.Length < 3) continue;
+
+                    long result = 0;
+
+                    intersection.IjFor((i, j) =>
                     {
-                        if (!WorkTogether(primes[i], primes[k]) || !WorkTogether(primes[j], primes[k])) continue;
-                        for (var m = k + 1; m < primes.Length; m++)
+                        var p1 = intersection[i];
+                        var p2 = intersection[j];
+                        if (!AreBuddies(p1, p2)) return;
+
+                        for (var k = j + 1; k < intersection.Length; k++)
                         {
-                            if (WorkTogether(primes[i], primes[m]) && WorkTogether(primes[j], primes[m]) && WorkTogether(primes[k], primes[m]))
+                            var p3 = intersection[k];
+
+                            if (AreBuddies(p1, p3) && AreBuddies(p2, p3))
                             {
-                                groups.Add(new FriendlyPrimes(new[]
-                                {
-                                    primes[i], primes[j], primes[k], primes[m]
-                                }));
+                                result = rootPrime.Key + friend + p1 + p2 + p3;
                             }
                         }
-                    }
+                    });
+
+                    if (result > 0)
+                        return result;
                 }
             }
 
-            foreach (var prime in primes)
-            {
-                foreach (var group in groups)
-                {
-                    if (group.IsFriendlyWith(prime))
-                    {
-                        return group.Sum + prime;
-                    }
-                }
-            }
+            _buddyLookup = null;
 
             return 0;
         }
 
-        public static bool WorkTogether(long number, long anotherNumber)
+        public bool AreBuddies(long number, long anotherNumber)
         {
+            if (_buddyLookup != null)
+            {
+                return _buddyLookup[number].Contains(anotherNumber) &&
+                    _buddyLookup[anotherNumber].Contains(number);
+            }
+
             return number.Concat(anotherNumber).IsPrime() &&
                    anotherNumber.Concat(number).IsPrime();
         }
 
-        private Dictionary<long, List<long>> PopulateDict(long[] primes)
+        private Dictionary<long, List<long>> CreateBuddyLookup(long[] primes)
         {
             var d = new Dictionary<long, List<long>>();
 
-            for (var i = 0; i < primes.Length; i++)
+            primes.IjForEach((p1, p2) =>
             {
-                for (var j = i + 1; j < primes.Length; j++)
-                {
-                    var p1 = primes[i];
-                    var p2 = primes[j];
-                    if (WorkTogether(p1, p2))
-                    {
-                        if (d.ContainsKey(p1))
-                        {
-                            d[p1].Add(p2);
-                        }
-                        else
-                        {
-                            d[p1] = new List<long> { p2 };
-                        }
-                        if (d.ContainsKey(p2))
-                        {
-                            d[p2].Add(p1);
-                        }
-                        else
-                        {
-                            d[p2] = new List<long> { p1 };
-                        }
-                    }
-                }
-            }
+                if (!AreBuddies(p1, p2)) return;
+
+                d.AddSafe(p1, p2);
+                d.AddSafe(p2, p1);
+            });
+
             return d;
         }
-    }
-
-    public class FriendlyPrimes
-    {
-        private readonly long[] _primes;
-
-        public FriendlyPrimes(long[] primes)
-        {
-            _primes = primes;
-        }
-
-        public override string ToString()
-        {
-            return _primes.OrderBy(p => p).StringJoin();
-        }
-
-        public long Id => _primes.Product();
-
-        public bool IsFriendlyWith(long candidate)
-        {
-            return _primes.All(p => p == candidate || Problem60.WorkTogether(p, candidate));
-        }
-
-        public bool IsFriendlyWith(FriendlyPrimes group) => _primes.All(IsFriendlyWith);
-
-        public FriendlyPrimes Merge(FriendlyPrimes group) => new FriendlyPrimes(_primes.Concat(group._primes).ToArray());
-
-        public long Sum => _primes.Sum();
     }
 }

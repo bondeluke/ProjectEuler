@@ -21,7 +21,8 @@ namespace ProjectEulerTests
             var problemsToVerify = new IProjectEulerProblem[]
             {
                 new Problem1(),
-                new Problem5()
+                new Problem5(),
+                new Problem60() 
             };
 
             foreach (var problem in problemsToVerify)

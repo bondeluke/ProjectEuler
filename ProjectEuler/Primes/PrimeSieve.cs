@@ -7,7 +7,7 @@ namespace ProjectEuler.Primes
     {
         public PrimeSieve(long limit)
         {
-            _limit = limit;
+            _limit = limit + 1;
 
             InitializeArray();
             CrossOutComposites();

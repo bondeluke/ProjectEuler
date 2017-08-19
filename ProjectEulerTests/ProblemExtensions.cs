@@ -29,7 +29,7 @@ namespace ProjectEulerTests
         {
             if (problem.Milliseconds >= milliseconds)
             {
-                throw new Exception($"{problem.Name} took too long to solve.");
+                throw new Exception($"{problem.Name} took too long to solve. It ran for {problem.Milliseconds} but was expected to run under {milliseconds}");
             }
         }
 
@@ -37,7 +37,7 @@ namespace ProjectEulerTests
         {
             problem
                 .SolutionShouleBe(problem.ExpectedSolution)
-                .SolveTimeShouldBeLessThan((problem.Benchmark * 0.5).ToLong());
+                .SolveTimeShouldBeLessThan((problem.Benchmark * 1.2).ToLong());
         }
     }
 }

@@ -1,3 +1,3 @@
 Problem60
 Solution: 26033
-Time elapsed: 25038 millisecond(s)
+Time elapsed: 718 millisecond(s)
