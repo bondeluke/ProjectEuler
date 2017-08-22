@@ -3,6 +3,7 @@ using ProjectEuler.Core;
 using ProjectEuler.Helpers;
 using ProjectEuler.Primes;
 using ProjectEuler.Problems;
+using ProjectEuler.Problems.Problem89;
 using ProjectEuler.Problems.Problem99;
 
 namespace ProjectEulerTests
@@ -21,34 +22,21 @@ namespace ProjectEulerTests
             var problemsToVerify = new IProjectEulerProblem[]
             {
                 new Problem1(),
+                new Problem2(),
+                new Problem3(),
+                new Problem4(),
                 new Problem5(),
-                new Problem60() 
+                new Problem6(),
+                new Problem7(),
+                new Problem60(),
+                new Problem89(),
+                new Problem99()
             };
 
             foreach (var problem in problemsToVerify)
             {
                 problem.VerifySolutionAndPerformance();
             }
-
-            new Problem2()
-                .SolutionShouleBe(4613732)
-                .SolveTimeShouldBeLessThan(25);
-
-            new Problem3()
-                .SolutionShouleBe(6857)
-                .SolveTimeShouldBeLessThan(125);
-
-            new Problem4()
-                .SolutionShouleBe(906609)
-                .SolveTimeShouldBeLessThan(200);
-
-            new Problem6()
-                .SolutionShouleBe(25164150)
-                .SolveTimeShouldBeLessThan(30);
-
-            new Problem7()
-                .SolutionShouleBe(104743)
-                .SolveTimeShouldBeLessThan(50);
 
             new Problem10()
                 .SolutionShouleBe(142913828922)
@@ -77,10 +65,6 @@ namespace ProjectEulerTests
             new Problem65(log)
                 .SolutionShouleBe(272)
                 .SolveTimeShouldBeLessThan(50);
-
-            new Problem99()
-                .SolutionShouleBe(709)
-                .SolveTimeShouldBeLessThan(75);
 
             new Problem387()
                 .SolutionShouleBe(696067597313468)

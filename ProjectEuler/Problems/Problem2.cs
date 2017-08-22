@@ -9,8 +9,8 @@ namespace ProjectEuler.Problems
     {
         private const long Limit = 4000000;
 
-        public object ExpectedSolution { get; }
-        public long Benchmark { get; }
+        public object ExpectedSolution => 4613732;
+        public long Benchmark => 102;
 
         public object Solve()
         {

@@ -1,14 +1,14 @@
 ﻿namespace ProjectEuler.Math
 {
-    public class DivisionResult
+    public class DivisionResult<T>
     {
-        public DivisionResult(long quotient, long remainder)
+        public DivisionResult(T quotient, T remainder)
         {
             Quotient = quotient;
             Remainder = remainder;
         }
 
-        public long Quotient { get; }
-        public long Remainder { get; }
+        public T Quotient { get; }
+        public T Remainder { get; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using ProjectEuler.Math;
 
 namespace ProjectEuler
 {
@@ -23,5 +26,16 @@ namespace ProjectEuler
 
         public static string StringJoin(this IEnumerable<long> values, string seperator = ", ") => string.Join(seperator, values);
         public static string Plus(this string value, object addition) => value + addition;
+
+        public static string Repeat(this string value, int times)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < times; i++)
+            {
+                sb.Append(value);
+            }
+
+            return sb.ToString();
+        }
     }
 }

@@ -50,12 +50,20 @@ namespace ProjectEuler.Math
                 yield return number;
         }
 
-        public static DivisionResult DivideBy(this long number, long divisor)
+        public static DivisionResult<long> DivideBy(this long number, long divisor)
         {
             var remainder = number % divisor;
             var quotient = (number - remainder) / divisor;
 
-            return new DivisionResult(quotient, remainder);
+            return new DivisionResult<long>(quotient, remainder);
+        }
+
+        public static DivisionResult<int> DivideBy(this int number, int divisor)
+        {
+            var remainder = number % divisor;
+            var quotient = (number - remainder) / divisor;
+
+            return new DivisionResult<int>(quotient, remainder);
         }
 
         public static long SumDigits(this long number) => number.ToString().Select(c => Parse(c.ToString())).Sum();

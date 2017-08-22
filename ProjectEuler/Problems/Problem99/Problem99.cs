@@ -9,8 +9,8 @@ namespace ProjectEuler.Problems.Problem99
     // Largest Exponential
     public class Problem99 : IProjectEulerProblem
     {
-        public long Benchmark { get; }
-        public object ExpectedSolution { get; }
+        public long Benchmark => 75;
+        public object ExpectedSolution => 709;
 
         public object Solve()
         {

@@ -37,7 +37,7 @@ namespace ProjectEulerTests
         {
             problem
                 .SolutionShouleBe(problem.ExpectedSolution)
-                .SolveTimeShouldBeLessThan((problem.Benchmark * 1.2).ToLong());
+                .SolveTimeShouldBeLessThan((problem.Benchmark * 1.1 + 5).ToLong());
         }
     }
 }
