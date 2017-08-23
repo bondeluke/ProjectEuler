@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectEuler.Core;
 using ProjectEuler.Problems;
-using ProjectEuler.Problems.Problem89;
-using ProjectEuler.Problems.Problem99;
 
 namespace ProjectEulerTests
 {

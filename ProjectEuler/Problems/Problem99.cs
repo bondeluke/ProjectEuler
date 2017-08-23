@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using ProjectEuler.Core;
 using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 
-namespace ProjectEuler.Problems.Problem99
+namespace ProjectEuler.Problems
 {
     // Largest Exponential
     public class Problem99 : IProjectEulerProblem
@@ -42,9 +41,7 @@ namespace ProjectEuler.Problems.Problem99
 
         private static LineInfo[] GetLines()
         {
-            var path = FileHelper.GetFullPath("Problems\\Problem99\\numbers.txt");
-
-            var lines = File.ReadAllLines(path);
+            var lines = FileHelper.GetResourceLines("p99.txt");
 
             var lineInfo = new List<LineInfo>();
 
@@ -60,5 +57,21 @@ namespace ProjectEuler.Problems.Problem99
 
             return lineInfo.ToArray();
         }
+    }
+
+    public class LineInfo
+    {
+        public LineInfo(int lineNumber, int @base, int exponent)
+        {
+            LineNumber = lineNumber;
+            Base = @base;
+            Exponent = exponent;
+        }
+
+        public int LineNumber { get; }
+        public int Base { get; }
+        public int Exponent { get; }
+
+        public override string ToString() => $"{LineNumber}: {Base}^{Exponent}";
     }
 }

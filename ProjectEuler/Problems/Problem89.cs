@@ -1,9 +1,8 @@
-﻿using System.IO;
-using ProjectEuler.Core;
+﻿using ProjectEuler.Core;
 using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 
-namespace ProjectEuler.Problems.Problem89
+namespace ProjectEuler.Problems
 {
     public class Problem89 : IProjectEulerProblem
     {
@@ -12,9 +11,7 @@ namespace ProjectEuler.Problems.Problem89
 
         public object Solve()
         {
-            var path = FileHelper.GetFullPath("Problems\\Problem89\\numbers.txt");
-
-            var lines = File.ReadAllLines(path);
+            var lines = FileHelper.GetResourceLines("p89.txt");
 
             var charactersSaved = 0;
 

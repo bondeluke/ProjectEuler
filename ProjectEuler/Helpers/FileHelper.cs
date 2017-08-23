@@ -11,5 +11,12 @@ namespace ProjectEuler.Helpers
 
             return Path.Combine(path, relativePath);
         }
+
+        public static string[] GetResourceLines(string name)
+        {
+            var path = GetFullPath("Resources\\" + name);
+
+            return File.ReadAllLines(path);
+        }
     }
 }
