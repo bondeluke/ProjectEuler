@@ -6,8 +6,6 @@ namespace ProjectEuler.Math
 {
     public static class Algebra
     {
-        private static readonly PhiSieve _sieve = new PhiSieve(1000000);
-
         public static bool Divides(this long divisor, long value) => value % divisor == 0;
 
         public static bool AreCoprime(long a, long b) => Gcd(a.Abs(), b.Abs()) == 1;
@@ -49,8 +47,6 @@ namespace ProjectEuler.Math
         }
 
         public static long Lcm(long a, long b) => a * b / Gcd(a, b);
-
-        public static long Phi(this long number) => _sieve.Phi(number);
 
         public static long[] Divisors(this long number)
         {

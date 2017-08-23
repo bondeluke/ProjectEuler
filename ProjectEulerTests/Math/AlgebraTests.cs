@@ -101,14 +101,5 @@ namespace ProjectEulerTests.Math
             divisors[1].ShouldBe(2);
             divisors[2].ShouldBe(4);
         }
-
-        [TestMethod]
-        public void Phi()
-        {
-            1L.Phi().ShouldBe(1);
-            2L.Phi().ShouldBe(1);
-            6L.Phi().ShouldBe(2);
-            9L.Phi().ShouldBe(6);
-        }
     }
 }

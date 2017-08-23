@@ -7,12 +7,12 @@ namespace ProjectEuler.Problems
     // Spiral primes
     public class Problem58 : IProjectEulerProblem
     {
-        public object ExpectedSolution { get; }
-        public long Benchmark { get; }
+        public object ExpectedSolution => 26241;
+        public long Benchmark => 374;
 
         public object Solve()
         {
-            var primes = new PrimeSieve();
+            var primes = new PrimeSieve(10.Power(6));
 
             const double threshold = 0.1;
             var totalNumbers = 5; // 1, 3, 5, 7, 9

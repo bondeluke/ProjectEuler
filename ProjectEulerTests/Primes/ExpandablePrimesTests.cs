@@ -34,7 +34,7 @@ namespace ProjectEulerTests.Primes
 
             collection.IsPrime(15).ShouldBeFalse();
             collection.IsPrime(121).ShouldBeFalse();
-            collection.IsPrime(10.Power(8)).ShouldBeFalse();
+            collection.IsPrime(10.Power(12)).ShouldBeFalse();
 
             collection.IsPrime(4008200000033).ShouldBeTrue();
         }

@@ -35,6 +35,9 @@ namespace ProjectEulerTests
 
         public static void VerifySolutionAndPerformance(this IProjectEulerProblem problem)
         {
+            if (problem.ExpectedSolution == null)
+                return;
+
             problem
                 .SolutionShouleBe(problem.ExpectedSolution)
                 .SolveTimeShouldBeLessThan((problem.Benchmark * 1.1 + 5).ToLong());

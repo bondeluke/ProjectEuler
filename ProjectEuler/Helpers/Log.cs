@@ -6,6 +6,9 @@ namespace ProjectEuler.Helpers
     {
         private readonly StringBuilder _log;
 
+        // Merely convenience
+        public static Log Current { get; set; }
+
         public Log()
         {
             _log = new StringBuilder();

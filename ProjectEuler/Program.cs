@@ -9,13 +9,13 @@ namespace ProjectEuler
     {
         private static void Main(string[] args)
         {
-            var log = new Log();
+            Log.Current = new Log();
 
-            var result = new Problem27().SolveWithTime();
+            var result = new Problem387().SolveWithTime();
 
-            log.WriteLine(result);
+            Log.Current.WriteLine(result);
 
-            File.WriteAllText(FileHelper.GetFullPath("output.txt"), log.ReadAll());
+            File.WriteAllText(FileHelper.GetFullPath("output.txt"), Log.Current.ReadAll());
         }
     }
 }
