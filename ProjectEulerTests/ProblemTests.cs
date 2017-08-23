@@ -28,6 +28,7 @@ namespace ProjectEulerTests
                 new Problem65(),
                 new Problem72(),
                 new Problem78().GetTestCase(),
+                new Problem87(), 
                 new Problem89(),
                 new Problem99(),
                 new Problem387()

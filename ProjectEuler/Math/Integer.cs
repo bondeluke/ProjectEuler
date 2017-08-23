@@ -80,5 +80,7 @@ namespace ProjectEuler.Math
         public static BigInteger ToBigInteger(this int  number) => new BigInteger(number);
 
         public static BigInteger ToBigInteger(this long  number) => new BigInteger(number);
+
+        public static double NthRoot(this long number, int n) => System.Math.Pow(number, (double) 1 / n);
     }
 }

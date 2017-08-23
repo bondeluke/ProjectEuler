@@ -11,7 +11,7 @@ namespace ProjectEuler
         {
             Log.Current = new Log();
 
-            var result = new Problem387().SolveWithTime();
+            var result = new Problem87().SolveWithTime();
 
             Log.Current.WriteLine(result);
 
