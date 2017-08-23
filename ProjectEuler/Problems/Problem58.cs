@@ -12,6 +12,8 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
+            var primes = new PrimeSieve();
+
             const double threshold = 0.1;
             var totalNumbers = 5; // 1, 3, 5, 7, 9
             var totalPrimes = 3; // 3, 5, 7
@@ -25,7 +27,7 @@ namespace ProjectEuler.Problems
                 for (byte diagonal = 0; diagonal < 4; diagonal++)
                 {
                     var number = GetNumberAlongDiagonal(layer, diagonal);
-                    if (number.IsPrime())
+                    if (number.IsPrime(primes))
                         totalPrimes++;
 
                     totalNumbers++;

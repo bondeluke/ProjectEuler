@@ -4,7 +4,7 @@ using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
-    public class ExpandablePrimes : IPrimeDecider
+    public class ExpandablePrimes : IPrimeDecider, IPrimeProvider, IPrimeIndexer
     {
         private readonly List<long> _primes;
 
@@ -37,7 +37,7 @@ namespace ProjectEuler.Primes
                 // checking numbers at this magnitude, we'll probably need to grow soon anyway.
             }
 
-            return new PrimalityAlgorithm(_primes, _greatestChecked).IsPrime(number);
+            return new PrimalityAlgorithm(this, _greatestChecked).IsPrime(number);
         }
 
         private void PopulatePrimesUpTo(long upto)
@@ -73,5 +73,7 @@ namespace ProjectEuler.Primes
 
             return _primes[index];
         }
+
+        public ICollection<long> GetPrimes() => _primes;
     }
 }

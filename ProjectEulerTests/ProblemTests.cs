@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectEuler.Core;
 using ProjectEuler.Helpers;
-using ProjectEuler.Primes;
 using ProjectEuler.Problems;
 using ProjectEuler.Problems.Problem89;
 using ProjectEuler.Problems.Problem99;
@@ -16,9 +15,6 @@ namespace ProjectEulerTests
         {
             var log = new Log();
 
-            PrimeExtensions.PreLoadSieve(); // Give that sieve some time to load
-
-            // Ideally, would find with reflection.
             var problemsToVerify = new []
             {
                 new Problem1(),
@@ -30,6 +26,7 @@ namespace ProjectEulerTests
                 new Problem7(),
                 new Problem10(),
                 new Problem25(),
+                new Problem27(),
                 new Problem60(),
                 new Problem78().GetTestCase(),
                 new Problem89(),
@@ -41,10 +38,6 @@ namespace ProjectEulerTests
                 problem.VerifySolutionAndPerformance();
             }
             
-            new Problem27()
-                .SolutionShouleBe(-59231)
-                .SolveTimeShouldBeLessThan(60);
-
             new Problem47()
                 .SolutionShouleBe(134043)
                 .SolveTimeShouldBeLessThan(25);

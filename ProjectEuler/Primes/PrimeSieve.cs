@@ -3,8 +3,13 @@ using ProjectEuler.Math;
 
 namespace ProjectEuler.Primes
 {
-    public class PrimeSieve : IPrimeDecider
+    public class PrimeSieve : IPrimeDecider, IPrimeProvider, IPrimeIndexer
     {
+        public PrimeSieve() : this(10000001)
+        {
+            
+        }
+
         public PrimeSieve(long limit)
         {
             _limit = limit + 1;
@@ -18,9 +23,7 @@ namespace ProjectEuler.Primes
 
         private bool[] _isPrime;
 
-        public long[] Primes { get; private set; }
-
-        public int PrimeCount => Primes.Length;
+        private long[] _primes;
 
         private void AddPrimesToList()
         {
@@ -34,7 +37,7 @@ namespace ProjectEuler.Primes
                 }
             }
 
-            Primes = primes.ToArray();
+            _primes = primes.ToArray();
         }
 
         private void InitializeArray()
@@ -68,7 +71,11 @@ namespace ProjectEuler.Primes
                 return _isPrime[number];
             }
 
-            return new PrimalityAlgorithm(Primes, _limit).IsPrime(number);
+            return new PrimalityAlgorithm(this, _limit).IsPrime(number);
         }
+
+        public ICollection<long> GetPrimes() => _primes;
+
+        public long GetNthPrime(int n) => _primes[n - 1];
     }
 }

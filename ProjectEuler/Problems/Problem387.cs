@@ -14,6 +14,8 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
+            var primes = new PrimeSieve();
+
             const int power = 14;
 
             var harshadNumbers = new long[]
@@ -30,10 +32,10 @@ namespace ProjectEuler.Problems
                 trunctableHarshads.AddRange(previousNDigitHarshads);
             }
 
-            var strongs = trunctableHarshads.Where(IsStrong).ToArray();
-            var primes = FindPrimes(strongs); // Finding primes adds another digit
+            var strongs = trunctableHarshads.Where(h => IsStrong(h, primes)).ToArray();
+            var strongPrimes = FindPrimes(strongs, primes); // Finding primes adds another digit
 
-            return primes.Sum();
+            return strongPrimes.Sum();
         }
 
         private static long[] FindNextIteration(long[] previousHarshads)
@@ -55,7 +57,7 @@ namespace ProjectEuler.Problems
             return list.ToArray();
         }
 
-        private static long[] FindPrimes(long[] strongs)
+        private static long[] FindPrimes(long[] strongs, IPrimeDecider decider)
         {
             var list = new List<long>();
 
@@ -64,7 +66,7 @@ namespace ProjectEuler.Problems
                 for (var digit = 1; digit < 10; digit += 2)
                 {
                     var newNumber = number.ToString().Plus(digit).ToLong();
-                    if (newNumber.IsPrime())
+                    if (newNumber.IsPrime(decider))
                     {
                         list.Add(newNumber);
                     }
@@ -74,6 +76,6 @@ namespace ProjectEuler.Problems
             return list.ToArray();
         }
 
-        private static bool IsStrong(long number) => number.IsHarshad() && (number / number.SumDigits()).IsPrime();
+        private static bool IsStrong(long number, IPrimeDecider decider) => number.IsHarshad() && (number / number.SumDigits()).IsPrime(decider);
     }
 }

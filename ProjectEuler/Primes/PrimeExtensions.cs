@@ -5,13 +5,11 @@ namespace ProjectEuler.Primes
 {
     public static class PrimeExtensions
     {
-        private static readonly PrimeSieve _sieve = new PrimeSieve(10000001); // TODO: Delete me.. probably
-
-        public static long[] GetPrimeFactors(this long value, bool makeDistinct = false)
+        public static long[] GetPrimeFactors(this long value, IPrimeProvider provider, bool makeDistinct = false)
         {
             var factors = new List<long>(4);
 
-            foreach (var prime in _sieve.Primes)
+            foreach (var prime in provider.GetPrimes())
             {
                 var primeWasAdded = false;
 
@@ -33,16 +31,9 @@ namespace ProjectEuler.Primes
             return factors.ToArray();
         }
 
-        public static long[] GetUniquePrimeFactors(this long value) => value.GetPrimeFactors(true);
+        public static long[] GetUniquePrimeFactors(this long value, IPrimeProvider provider) => value.GetPrimeFactors(provider, true);
 
-        // Not thread safe
-        public static bool IsPrime(this long number) => _sieve.IsPrime(number);
-
-        public static bool IsComposite(this long number) => !IsPrime(number);
-
-        public static void PreLoadSieve()
-        {
-            _sieve.IsPrime(1);
-        }
+        public static bool IsPrime(this long value, IPrimeDecider decider) => decider.IsPrime(value);
+        public static bool IsComposite(this long value, IPrimeDecider decider) => !decider.IsPrime(value);
     }
 }

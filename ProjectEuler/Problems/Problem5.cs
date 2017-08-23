@@ -18,7 +18,7 @@ namespace ProjectEuler.Problems
 
             BigInteger product = 1;
 
-            foreach (var prime in sieve.Primes)
+            foreach (var prime in sieve.GetPrimes())
             {
                 product *= GetLargestPowerOfPrime(prime, number);
             }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ProjectEuler.Math;
 
-namespace ProjectEuler.Math
+namespace ProjectEuler.Primes
 {
     // PrimalityAlgorithm does not care how its primes came to be, 
     // It simply evaluates whether a number between 1 and max(primes)^2 is prime.
@@ -11,9 +12,9 @@ namespace ProjectEuler.Math
         private readonly long _greatestChecked;
         private readonly ICollection<long> _primes;
 
-        public PrimalityAlgorithm(ICollection<long> primes, long greatestChecked)
+        public PrimalityAlgorithm(IPrimeProvider provider, long greatestChecked)
         {
-            _primes = primes;
+            _primes = provider.GetPrimes();
             _greatestChecked = greatestChecked;
         }
 
@@ -38,10 +39,5 @@ namespace ProjectEuler.Math
 
             throw new Exception("A decision could not be made");
         }
-    }
-
-    public interface IPrimeDecider
-    {
-        bool IsPrime(long number);
     }
 }

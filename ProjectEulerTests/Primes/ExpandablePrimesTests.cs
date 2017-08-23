@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
@@ -8,7 +9,19 @@ namespace ProjectEulerTests.Primes
     public class ExpandablePrimesTests
     {
         [TestMethod]
-        public void IsPrime()
+        public void Providing()
+        {
+            var sieve = new ExpandablePrimes();
+
+            var primes = sieve.GetPrimes().ToArray();
+
+            primes[0].ShouldBe(2);
+            primes[1].ShouldBe(3);
+            primes[2].ShouldBe(5);
+        }
+
+        [TestMethod]
+        public void Deciding()
         {
             var collection = new ExpandablePrimes();
 
@@ -27,7 +40,7 @@ namespace ProjectEulerTests.Primes
         }
 
         [TestMethod]
-        public void GetNthPrime()
+        public void Indexing()
         {
             var collection = new ExpandablePrimes();
 

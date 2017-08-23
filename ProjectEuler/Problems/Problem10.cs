@@ -16,7 +16,7 @@ namespace ProjectEuler.Problems
         {
             var sieve = new PrimeSieve(Limit);
 
-            return sieve.Primes.Sum();
+            return sieve.GetPrimes().Sum();
         }
     }
 }

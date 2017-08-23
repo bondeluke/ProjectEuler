@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ProjectEuler.Core;
+using ProjectEuler.Math;
 using ProjectEuler.Primes;
 
 namespace ProjectEuler.Problems
@@ -14,7 +15,9 @@ namespace ProjectEuler.Problems
 
         public object Solve()
         {
-            return LargeNumber.GetPrimeFactors().Max();
+            var sieve = new PrimeSieve(LargeNumber.Sqrt().Ceiling().ToLong());
+
+            return LargeNumber.GetPrimeFactors(sieve).Max();
         }
     }
 }

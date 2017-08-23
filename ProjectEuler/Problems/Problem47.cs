@@ -19,7 +19,7 @@ namespace ProjectEuler.Problems
 
             var numPrimeFactors = new int[arbitraryLimit];
 
-            foreach (var prime in sieve.Primes)
+            foreach (var prime in sieve.GetPrimes())
             {
                 for (var number = prime; number < arbitraryLimit; number += prime)
                 {
@@ -60,9 +60,9 @@ namespace ProjectEuler.Problems
         }
 
         // ~ 3000 ms
-        private long SlowSolve()
+        private long SlowSolve(IPrimeProvider provider)
         {
-            return FindTheSmallestOfFourConsecutive(10.Power(6), number => number.GetUniquePrimeFactors().Length);
+            return FindTheSmallestOfFourConsecutive(10.Power(6), number => number.GetUniquePrimeFactors(provider).Length);
         }
     }
 }

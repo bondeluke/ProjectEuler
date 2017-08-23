@@ -10,31 +10,28 @@ namespace ProjectEuler.Problems
     public class Problem60 : IProjectEulerProblem
     {
         public object ExpectedSolution => 26033;
-        public long Benchmark => 706;
-
-        public Problem60()
-        {
-            PrimeExtensions.PreLoadSieve();
-        }
+        public long Benchmark => 800;
 
         private Dictionary<long, List<long>> _buddyLookup;
+
+        private PrimeSieve _sieve;
 
         public object Solve()
         {
             var limit = 8389; // The greatest prime in the answer
             //var limit = 10.Power(4);
-            var primes = new PrimeSieve(limit).Primes;
+            _sieve = new PrimeSieve();
 
-            var attempt = LookForSolution(primes, 1);
+            var attempt = LookForSolution(limit, 1);
 
             return attempt > 0 
                 ? attempt 
-                : LookForSolution(primes, 2);
+                : LookForSolution(limit, 2);
         }
 
-        private long LookForSolution(long[] primes, int mod)
+        private long LookForSolution(int limit, int mod)
         {
-            primes = primes.Where(p => p % 3 == mod).ToArray();
+            var primes = _sieve.GetPrimes().Where(p => p % 3 == mod && p <= limit).ToArray();
 
             _buddyLookup = CreateBuddyLookup(primes);
 
@@ -82,8 +79,8 @@ namespace ProjectEuler.Problems
                     _buddyLookup[anotherNumber].Contains(number);
             }
 
-            return number.Concat(anotherNumber).IsPrime() &&
-                   anotherNumber.Concat(number).IsPrime();
+            return number.Concat(anotherNumber).IsPrime(_sieve) &&
+                   anotherNumber.Concat(number).IsPrime(_sieve);
         }
 
         private Dictionary<long, List<long>> CreateBuddyLookup(long[] primes)

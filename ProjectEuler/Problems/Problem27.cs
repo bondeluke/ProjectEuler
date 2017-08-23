@@ -9,6 +9,9 @@ namespace ProjectEuler.Problems
     // produces the maximum number of primes for consecutive values of nn, starting with n=0.
     public class Problem27 : IProjectEulerProblem
     {
+        public long Benchmark => 31;
+        public object ExpectedSolution => -59231;
+
         private PrimeSieve _sieve;
 
         public object Solve()
@@ -20,7 +23,7 @@ namespace ProjectEuler.Problems
             long aGreat = 0, bGreat = 0;
             for (var a = -999; a < 1000; a++)
             {
-                foreach (var b in _sieve.Primes.TakeWhile(p => p < 1000))
+                foreach (var b in _sieve.GetPrimes().TakeWhile(p => p < 1000))
                 {
                     var count = GetConsecutivePrimeCount(a, b);
 
@@ -54,8 +57,5 @@ namespace ProjectEuler.Problems
             }
             return count;
         }
-
-        public long Benchmark { get; }
-        public object ExpectedSolution { get; }
     }
 }

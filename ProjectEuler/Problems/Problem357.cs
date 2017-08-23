@@ -1,4 +1,5 @@
-﻿using ProjectEuler.Core;
+﻿using System.Runtime.InteropServices.ComTypes;
+using ProjectEuler.Core;
 using ProjectEuler.Helpers;
 using ProjectEuler.Math;
 using ProjectEuler.Primes;
@@ -16,9 +17,12 @@ namespace ProjectEuler.Problems
             _log = log;
         }
 
+        private PrimeSieve _sieve;
+
         // TODO 
         public object Solve()
         {
+            _sieve = new PrimeSieve(1000);
             long sum = 0;
             // Hmm.. All candidates are odd prime combinations whose product is less than 50 000 000.
             Research();
@@ -75,12 +79,12 @@ namespace ProjectEuler.Problems
             {
                 if (HasProperty(number))
                 {
-                    _log.WriteLine($"{number}: {number.GetPrimeFactors().StringJoin()}");
+                    _log.WriteLine($"{number}: {number.GetPrimeFactors(_sieve).StringJoin()}");
                 }
             }
         }
 
-        private static bool HasProperty(long number)
+        private bool HasProperty(long number)
         {
             var divisors = number.Divisors();
 
@@ -90,7 +94,7 @@ namespace ProjectEuler.Problems
             for (var i = 0; i < divisors.Length / 2; i++)
             {
                 var j = divisors.Length - i - 1;
-                if (!(divisors[i] + divisors[j]).IsPrime())
+                if (!(divisors[i] + divisors[j]).IsPrime(_sieve))
                 {
                     return false;
                 }
