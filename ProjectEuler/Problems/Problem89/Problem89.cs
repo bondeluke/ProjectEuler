@@ -21,7 +21,7 @@ namespace ProjectEuler.Problems.Problem89
             foreach (var line in lines)
             {
                 var charCount = line.Trim().Length;
-                var better = line.FromRoman().ToRoman().Length;
+                var better = line.GetRomanValue().ToRoman().Length;
 
                 charactersSaved += charCount - better;
             }

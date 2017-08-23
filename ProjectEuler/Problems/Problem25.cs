@@ -6,8 +6,8 @@ namespace ProjectEuler.Problems
     // Problem 25: What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
     public class Problem25 : IProjectEulerProblem
     {
-        public object ExpectedSolution { get; }
-        public long Benchmark { get; }
+        public object ExpectedSolution => 4782;
+        public long Benchmark => 222;
 
         public object Solve()
         {

@@ -93,7 +93,7 @@ namespace ProjectEuler.Math
             return output.ToString();
         }
 
-        public static int FromRoman(this string roman)
+        public static int GetRomanValue(this string roman)
         {
             var value = 0;
 

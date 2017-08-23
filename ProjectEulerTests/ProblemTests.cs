@@ -19,7 +19,7 @@ namespace ProjectEulerTests
             PrimeExtensions.PreLoadSieve(); // Give that sieve some time to load
 
             // Ideally, would find with reflection.
-            var problemsToVerify = new IProjectEulerProblem[]
+            var problemsToVerify = new []
             {
                 new Problem1(),
                 new Problem2(),
@@ -28,7 +28,10 @@ namespace ProjectEulerTests
                 new Problem5(),
                 new Problem6(),
                 new Problem7(),
+                new Problem10(),
+                new Problem25(),
                 new Problem60(),
+                new Problem78().GetTestCase(),
                 new Problem89(),
                 new Problem99()
             };
@@ -37,15 +40,7 @@ namespace ProjectEulerTests
             {
                 problem.VerifySolutionAndPerformance();
             }
-
-            new Problem10()
-                .SolutionShouleBe(142913828922)
-                .SolveTimeShouldBeLessThan(100);
-
-            new Problem25()
-                .SolutionShouleBe(4782)
-                .SolveTimeShouldBeLessThan(300);
-
+            
             new Problem27()
                 .SolutionShouleBe(-59231)
                 .SolveTimeShouldBeLessThan(60);

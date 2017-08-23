@@ -9,10 +9,9 @@ namespace ProjectEuler
     {
         private static void Main(string[] args)
         {
-
             var log = new Log();
 
-            var result = new Problem7().SolveWithTimedResult();
+            var result = new Problem25().SolveWithTime();
 
             log.WriteLine(result);
 

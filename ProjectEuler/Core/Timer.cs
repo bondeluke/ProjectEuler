@@ -4,7 +4,7 @@ namespace ProjectEuler.Core
 {
     public static class Timer
     {
-        public static TimedResult SolveWithTimedResult(this IProjectEulerProblem problem)
+        public static TimedResult SolveWithTime(this IProjectEulerProblem problem)
         {
             var stopwatch = new Stopwatch();
 

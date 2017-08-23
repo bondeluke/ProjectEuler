@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.InteropServices.ComTypes;
 using static System.Int32;
 
 namespace ProjectEuler.Math
@@ -79,5 +78,7 @@ namespace ProjectEuler.Math
         public static long Concat(this long number, long anotherNumber) => number.ToString().Plus(anotherNumber).ToLong();
 
         public static BigInteger ToBigInteger(this int  number) => new BigInteger(number);
+
+        public static BigInteger ToBigInteger(this long  number) => new BigInteger(number);
     }
 }

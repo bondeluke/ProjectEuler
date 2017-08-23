@@ -9,7 +9,7 @@ namespace ProjectEulerTests
     {
         public static TimedResult SolutionShouleBe(this IProjectEulerProblem problem, object expectedSolution)
         {
-            var result = problem.SolveWithTimedResult();
+            var result = problem.SolveWithTime();
 
             if (result.Solution is long && expectedSolution is int)
             {

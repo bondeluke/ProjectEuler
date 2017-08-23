@@ -1,6 +1,6 @@
-﻿using ProjectEuler.Core;
+﻿using System.Linq;
+using ProjectEuler.Core;
 using ProjectEuler.Primes;
-using System.Linq;
 
 namespace ProjectEuler.Problems
 {
@@ -9,8 +9,8 @@ namespace ProjectEuler.Problems
     {
         private const int Limit = 2000000;
 
-        public object ExpectedSolution { get; }
-        public long Benchmark { get; }
+        public object ExpectedSolution => 142913828922;
+        public long Benchmark => 117;
 
         public object Solve()
         {

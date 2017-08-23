@@ -81,7 +81,7 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void BasicToRoman()
+        public void ToRomanBasic()
         {
             foreach (var mapping in _simpleMappings)
             {
@@ -90,7 +90,7 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void SubtractiveToRoman()
+        public void ToRomanSubtractive()
         {
             foreach (var mapping in _subtraciveMappings)
             {
@@ -99,20 +99,20 @@ namespace ProjectEulerTests.Math
         }
 
         [TestMethod]
-        public void BasicFromRoman()
+        public void GetRomanValueBasic()
         {
             foreach (var mapping in _simpleMappings)
             {
-                mapping.Item1.FromRoman().ShouldBe(mapping.Item2);
+                mapping.Item1.GetRomanValue().ShouldBe(mapping.Item2);
             }
         }
 
         [TestMethod]
-        public void SubtractiveFromRoman()
+        public void GetRomanValueSubtractive()
         {
             foreach (var mapping in _subtraciveMappings)
             {
-                mapping.Item1.FromRoman().ShouldBe(mapping.Item2);
+                mapping.Item1.GetRomanValue().ShouldBe(mapping.Item2);
             }
         }
     }
